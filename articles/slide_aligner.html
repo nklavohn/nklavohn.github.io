@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../css/main.css"/>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap');
+    </style>
+</head>
+
+<body>
+    <div id="body_wrapper">
+        <div id="name_space">
+            
+        </div>
+
+        <div id="navbar">
+            <div id="navwrap2">
+                <div id="navwrap3">
+                    <div id="navwrap1">
+                        <a href="../index.html" class="nav_btn">HOME</a>
+                        <a href="#data_science" class="nav_btn">DATA_SCIENCE</a>
+                        <a href="#software" class="nav_btn">SOFTWARE</a>
+                        <a href="#chemical_engineering" class="nav_btn">CHEMICAL_ENGINEERING</a>
+                        <a href="#writing" class="nav_btn">WRITING</a>
+                        <a href="#about" class="nav_btn">ABOUT</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+
+        </div>
+    </div>
+
+    <script>
+    // When the user scrolls the page, execute myFunction
+    window.onscroll = function() {myFunction()};
+
+    // Get the navbar
+    var navbar = document.getElementById("navbar");
+    var name_space = document.getElementById('name_space');
+
+    //when navbar gets to the top of the page (height of name_space), make it stick to the top
+    function myFunction() {
+        var height = name_space.clientHeight;
+        if (window.pageYOffset >= height) {
+            navbar.classList.add("sticky")
+        } else {
+            navbar.classList.remove("sticky");
+        }
+    }
+    </script>
+</body>
+
+
+<footer>
+
+</footer>
+</html>

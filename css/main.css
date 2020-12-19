@@ -1,0 +1,161 @@
+body {
+    padding: 0;
+    margin: 0;
+    background-color: #f7f7ee;
+    align: center;
+    display: block;
+}
+
+div {
+    display: block;
+}
+
+#body_wrapper {
+    align-content: center;
+}
+
+.content {
+    max-width: 1400px;
+}
+
+#name_space {
+    background: repeating-linear-gradient(
+      180deg,
+      #00587a,
+      #00587a 4px,
+      #086285 4px,
+      #086285 8px
+    );
+    background-size: 100% 15px;
+    padding-top: min(5%, 100px);
+    padding-bottom: min(2%, 40px);
+}
+
+.signature {
+    width: 80%;
+    max-width: 1400px;
+}
+
+#navbar {
+    overflow: hidden;
+    background-color: #00587a;
+    border-top: 5px solid #0f3037;
+    border-bottom: 3px solid #0f3037;
+}
+
+#navbar a {
+    /* float: left; */
+    font-family: "Cutive Mono";
+    font-size: 24px;
+    display: inline-block;
+    color: #e7e7de;
+    text-align: center;
+    margin: 5px 30px 5px 30px;
+    width: auto;
+    text-decoration: none;
+}
+
+#navwrap1 {
+    overflow: hidden;
+    border-top: 12px solid #e7e7de;
+    border-bottom: 12px solid #e7e7de;
+    text-align: center;
+    padding: 15px 0 15px 0;
+}
+
+#navwrap3 {
+    overflow: hidden;
+    border-bottom: 7px solid #0f3037;
+}
+
+#navwrap2 {
+    overflow: hidden;
+    border-bottom: 5px solid #e7e7de;
+}
+
+.nav_btn {
+    width: 100px;
+}
+
+.content {
+    margin: auto;
+}
+
+/* The sticky class is added to the navbar with javascript when navbar gets to the top */
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+/* To prevent snapping of page content, add height of navbar */
+.sticky + .content {
+    padding-top: 122px;
+}
+
+h3 {
+    font-family: georgia;
+    font-weight: 600;
+    font-size: 36px;
+    color: #555;
+    margin-bottom: 0px;
+}
+
+.entry_grid {
+    margin: auto;
+    padding: 20px;
+    min-width: 500px;
+    max-width: 1200px;
+    font-size: 0;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.entry_grid a {
+    text-decoration: none;
+}
+
+.entry_img {
+    height: 240px;
+    background-color: #999;
+}
+
+.port_entry {
+    height: 500px;
+    max-width: 400px;
+    width: 100%;
+    margin: 0;
+    padding: 20px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: top;
+    box-sizing: border-box;
+    border: 2px solid transparent;
+    transition: 0.5s;
+    background: transparent;
+}
+
+.port_entry:hover {
+    /* border: 2px solid #008891; */
+    transition: 0.2s;
+    background: #9bbec0;
+}
+
+.snippet {
+    font-family: georgia;
+    font-weight: 400;
+    font-size: 24px;
+    color: #777;
+    margin-top: 10px;
+}
+
+.footer {
+    font-family: georgia;
+    font-weight: 300;
+    font-size: 18px;
+    color: #888;
+    text-align: center;
+    width: auto;
+    border-top: 1px solid #888;
+    margin: 50px;
+}

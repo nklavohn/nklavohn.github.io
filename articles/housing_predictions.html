@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../css/main.css"/>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap');
+    </style>
+</head>
+
+<body>
+    <div id="body_wrapper">
+        <div id="name_space">
+            
+        </div>
+
+        <div id="navbar">
+            <div id="navwrap2">
+                <div id="navwrap3">
+                    <div id="navwrap1">
+                        <a href="index.html" class="nav_btn">HOME</a>
+                        <a href="#data_science" class="nav_btn">DATA_SCIENCE</a>
+                        <a href="#software" class="nav_btn">SOFTWARE</a>
+                        <a href="#chemical_engineering" class="nav_btn">CHEMICAL_ENGINEERING</a>
+                        <a href="#writing" class="nav_btn">WRITING</a>
+                        <a href="#about" class="nav_btn">ABOUT</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="entry_grid">
+                <div class="port_entry" id="housing_predictions">
+                    <a href="housing_predictions.html">
+                        <div class="entry_img">
+                            <img src="assets/housing_predictions.png" alt width="360" height="240"/>
+                        </div>
+                        <h3>Property Prices</h3>
+                        <p class="snippet">A machine learning project for predicting residential property value in Fulton County, Georgia, built with Python.</p>
+                    </a>
+                </div>
+                <div class="port_entry" id="slide_aligner">
+                    <a href="articles/slide_aligner.html">
+                        <div class="entry_img">
+                            <img src="assets/slide_aligner.png" alt width="360" height="240"/>
+                        </div>
+                        <h3>Slide Aligner</h3>
+                        <p class="snippet">An application to align confocal microscope images into 2D and 3D models, built with Java and MATLAB.</p>
+                    </a>
+                </div>
+                <div class="port_entry" id="algo_trading">
+                    <a href="articles/algo_trading">
+                        <div class="entry_img">
+                            <img src="assets/stock_algo.png" alt width="360" height="240"/>
+                        </div>
+                        <h3>Stock Algo</h3>
+                        <p class="snippet">A project to find and exploit stock market trends based on historical trading data, built with Python and SQLite.</p>
+                    </a>
+                </div>
+                <div class="port_entry" id="methanol_synthesis">
+                    <a href="articles/methanol_synthesis">
+                        <div class="entry_img">
+                            <img src="assets/methanol_plant.png" alt width="360" height="240"/>
+                        </div>
+                        <h3>Methanol Plant</h3>
+                        <p class="snippet">A design optimization and economic analysis of a tri-reforming methanol synthesis plant, built with ASPEN.</p>
+                    </a>
+                </div>
+                <div class="port_entry" id="tourist_agency">
+                    <a href="articles/tourist_agency">
+                        <div class="entry_img">
+                        </div>
+                        <h3>SQL Database App</h3>
+                        <p class="snippet">A database and web application for an Atlanta travel agency, built with MySQL, Python, HTML, and CSS.</p>
+                    </a>
+                </div>
+                <div class="port_entry" id="us">
+                    <a href="articles/us">
+                        <div class="entry_img">
+                            <img src="assets/us_concept.png" alt width="360" height="240"/>
+                        </div>
+                        <h3>Us</h3>
+                        <p class="snippet">A small indie-game exploring storytelling with art and music instead of words, built with Java and GLSL.</p>
+                    </a>
+                </div>
+                <div class="port_entry" id="writing">
+                    <a href="articles/writing">
+                        <div class="entry_img">
+                            <img src="assets/poetry.jpg" alt width="360" height="240"/>
+                        </div>
+                        <h3>Creative Writing</h3>
+                        <p class="snippet">A small sample of the fruits of one of my most important pastimes.</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    // When the user scrolls the page, execute myFunction
+    window.onscroll = function() {myFunction()};
+
+    // Get the navbar
+    var navbar = document.getElementById("navbar");
+    var name_space = document.getElementById('name_space');
+
+    //when navbar gets to the top of the page (height of name_space), make it stick to the top
+    function myFunction() {
+        var height = name_space.clientHeight;
+        if (window.pageYOffset >= height) {
+            navbar.classList.add("sticky")
+        } else {
+            navbar.classList.remove("sticky");
+        }
+    }
+    </script>
+</body>
+
+
+<footer>
+
+</footer>
+</html>
