@@ -1,0 +1,95 @@
+.top_space {
+    height: 60vh;
+    background-size: cover;
+    width: 100%;
+    display: table;
+    overflow: hidden;
+    background-position: center;
+}
+
+#top_space_data_science {
+    background-image: linear-gradient(0deg, rgba(0, 25, 50, 0.8), rgba(0, 25, 50, 0.8)), url('../assets/data_science.jpg');
+}
+
+#top_space_software {
+    background-image: linear-gradient(0deg, rgba(0, 25, 50, 0.8), rgba(0, 25, 50, 0.8)), url('../assets/software.jpg');
+}
+
+#top_space_chemical_engineering {
+    background-image: linear-gradient(0deg, rgba(0, 25, 50, 0.8), rgba(0, 25, 50, 0.8)), url('../assets/chemical_engineering.jpg');
+}
+
+#top_space_writing {
+    background-image: linear-gradient(0deg, rgba(0, 25, 50, 0.6), rgba(0, 25, 50, 0.6)), url('../assets/writing.jpg');
+}
+
+#in_progress {
+    font-family: "Cutive Mono";
+    font-size: 24px;
+    color: blue;
+}
+
+#complete {
+    font-family: "Cutive Mono";
+    font-size: 24px;
+    color: green;
+}
+
+#idle {
+    font-family: "Cutive Mono";
+    font-size: 24px;
+    color: red;
+}
+
+#top_title {
+    font-family: arial;
+    font-size: 64px;
+    color: #e7e7de;
+    font-weight: 500;
+}
+
+.category_entries_wrapper {
+    padding-top: 50px;
+}
+
+.category_wrapper {
+    margin: 0 30px 0 30px;
+    padding: 20px;
+    transition: 0.5s;
+    background: transparent;
+}
+
+.category_wrapper:hover {
+    transition: 0.2s;
+    background: #9bbec0;
+}
+
+.category_entry {
+    /* height: 240px; */
+    width: 100%;
+    display: flex;
+    vertical-align: center;
+    margin-top: 20px;
+}
+
+.category_entry_thumbnail {
+    width: 360px;
+    margin: auto;
+    margin-right: 20px;
+    /* margin-left: 50px; */
+}
+
+.category_entry_summary {
+    width: auto;
+    margin: 20px;
+    padding-left: 40px;
+    border-left: 1px solid #888;
+}
+
+.category_entry_title {
+    font-family: georgia;
+    font-weight: 600;
+    font-size: 30px;
+    color: #555;
+    margin-right: 20px;
+}
