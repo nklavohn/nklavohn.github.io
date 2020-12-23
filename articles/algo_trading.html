@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../css/main.css"/>
+    <link rel="stylesheet" href="../css/article.css"/>
+</head>
+
+<body>
+    <div id="body_wrapper">
+        <div id="name_space_empty">
+        </div>
+
+        <div class="sticky" id="navbar">
+            <div id="navwrap2">
+                <div id="navwrap3">
+                    <div id="navwrap1">
+                        <a href="../index.html" class="nav_btn">FEATURED</a>
+                        <a href="../categories/data_science.html" class="nav_btn">DATA_SCIENCE</a>
+                        <a href="../categories/software.html" class="nav_btn">SOFTWARE</a>
+                        <a href="../categories/chemical_engineering.html" class="nav_btn">CHEMICAL_ENGINEERING</a>
+                        <a href="../categories/writing.html" class="nav_btn">WRITING</a>
+                        <a href="../about.html" class="nav_btn">ABOUT</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="article_wrapper">
+                <h3>Objective</h3>
+                <p>To develop a trading algorithm that outperforms the S&P500 for use in passive income generation.</p>
+                <h3>Introduction</h3>
+                <p>In the past few decades, computers have become a vital part of the way the stock market functions. You no longer
+                    have to go the exchange and yell out bids on the floor, or call up a broker to open or close a position. This is
+                    the democratization of personal investment.</p>
+                <p>There are two types of trading styles that carry the most traction right now. The 'old school' long-term investment strategies
+                    of the big players like Warren Buffet that hold positions for months or years with high returns per position, and the newer high
+                    frequency trading (HTF) strategies hold positions for seconds or minutes with low returns per position. The two extremes (high and low frequency)
+                    have extraordinarily high competition and lots of very brilliant people working to beat everyone else, but there seems to be less
+                    competition in that middle frequency range where positions are held for, say, a day or two at a time. This is the region
+                    where I am researching.</p>
+                <div class="img_wrapper">
+                    <img src="../assets/slide_aligner.png" alt width="720" height="480"/>
+                </div>
+            </div>
+
+            <div class="footer">
+                <p>© 2021 Nicholas Klavohn. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    // When the user scrolls the page, execute myFunction
+    window.onscroll = function() {myFunction()};
+
+    // Get the navbar
+    var navbar = document.getElementById("navbar");
+    var name_space = document.getElementById('name_space_empty');
+
+    //when navbar gets to the top of the page (height of name_space), make it stick to the top
+    function myFunction() {
+        var height = name_space.clientHeight;
+        if (window.pageYOffset >= height) {
+            navbar.classList.add("sticky")
+        } else {
+            navbar.classList.remove("sticky");
+        }
+    }
+    </script>
+</body>
+
+</html>

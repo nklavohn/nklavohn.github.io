@@ -1,0 +1,34 @@
+p {
+    font-family: georgia;
+    font-weight: 400;
+    font-size: 20px;
+    color: #777;
+    margin: 0 0 0 0;
+    line-height: 1.5em;
+    text-align: justify;
+
+    padding: 10px 25px 0 25px;
+    border-left: 1px dashed #9bbec0;
+}
+
+h3 {
+    margin: 25px 0 0 0;
+    padding: 0 25px 10px 23px;
+    border-left: 3px solid #008891;
+}
+
+.article_wrapper {
+    padding: 25px;
+    display: block;
+}
+
+.footer > p {
+    border: none;
+    text-align: center;
+}
+
+.img_wrapper {
+    width: auto;
+    text-align: center;
+    margin: 15px 25px;
+}

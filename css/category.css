@@ -24,19 +24,19 @@
 }
 
 #in_progress {
-    font-family: "Cutive Mono";
+    font-family: "Courier New";
     font-size: 24px;
     color: blue;
 }
 
 #complete {
-    font-family: "Cutive Mono";
+    font-family: "Courier New";
     font-size: 24px;
     color: green;
 }
 
 #idle {
-    font-family: "Cutive Mono";
+    font-family: "Courier New";
     font-size: 24px;
     color: red;
 }
@@ -74,9 +74,9 @@
 
 .category_entry_thumbnail {
     width: 360px;
-    margin: auto;
-    margin-right: 20px;
-    /* margin-left: 50px; */
+    height: 240px;
+    margin: auto 20px auto 0;
+    background-color: #999;
 }
 
 .category_entry_summary {
@@ -84,6 +84,8 @@
     margin: 20px;
     padding-left: 40px;
     border-left: 1px solid #888;
+    display: flex;
+    color: #777;
 }
 
 .category_entry_title {
@@ -92,4 +94,17 @@
     font-size: 30px;
     color: #555;
     margin-right: 20px;
+}
+
+.category_entry_snippet {
+    font-family: georgia;
+    font-weight: 400;
+    font-size: 24px;
+    color: #777;
+    margin: auto;
+    padding: 10px 0px;
+}
+
+.link > a {
+    all: initial;
 }
