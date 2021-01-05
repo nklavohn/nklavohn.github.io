@@ -4,6 +4,7 @@ body {
     background-color: #f7f7f1;
     align: center;
     display: block;
+    min-width: 1000px;
 }
 
 div {
