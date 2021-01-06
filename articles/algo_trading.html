@@ -28,21 +28,57 @@
 
         <div class="content">
             <div class="article_wrapper">
-                <h3>Objective</h3>
-                <p>To develop a trading algorithm that outperforms the S&P500 for use in passive income generation.</p>
-                <h3>Introduction</h3>
+                <span class="category_entry_title">Algorithmic Stock Trading</span>
+                <span id="in_progress">IN_PROGRESS</span>
+                <!-- <h1>Introduction</h1>
                 <p>In the past few decades, computers have become a vital part of the way the stock market functions. You no longer
-                    have to go the exchange and yell out bids on the floor, or call up a broker to open or close a position. This is
+                    have to go to the exchange and yell out bids on the floor, or call up a broker to open or close a position. This is
                     the democratization of personal investment.</p>
                 <p>There are two types of trading styles that carry the most traction right now. The 'old school' long-term investment strategies
                     of the big players like Warren Buffet that hold positions for months or years with high returns per position, and the newer high
-                    frequency trading (HTF) strategies hold positions for seconds or minutes with low returns per position. The two extremes (high and low frequency)
+                    frequency trading (HTF) strategies that hold positions for seconds or minutes with low returns per position. The two extremes (high and low frequency)
                     have extraordinarily high competition and lots of very brilliant people working to beat everyone else, but there seems to be less
                     competition in that middle frequency range where positions are held for, say, a day or two at a time. This is the region
-                    where I am researching.</p>
+                    where I am researching.</p> -->
                 <div class="img_wrapper">
-                    <img src="../assets/slide_aligner.png" alt width="720" height="480"/>
+                    <img src="../assets/algo_trading/backtester.gif" alt width="720" height="480"/>
+                    <h4>An example output from my backtesting program, animated over time</h4>
                 </div>
+                <h1>Objective</h1>
+                <p>To develop a trading algorithm that outperforms the S&P500 for use in passive wealth growth.</p>
+                <h1>Custom-built Backtester</h1>
+                <h2>Overview</h2>
+                <p>The best available method for measuring the success of a trading strategy is to 'backtest' it on historical data.
+                    I originally did my backtesting online with Quantopian and QuantConnect, but decided to break away from them
+                    due to their limited logging and bans on data export (due to licensing contracts).</p>
+                <p>Instead, I developed my
+                    own backtesting environment in Python from scratch and began scraping data from brokerage APIs.</p>
+                <h2>Code Architecture</h2>
+                <p>An information flow diagram is provided below outlining the design of the backtester. The key design principle
+                    here is segmentation. By granting each element of the backtester only the information it needs and standardizing
+                    what data flows between them, each element is entirely interchangable on command. This allows for
+                    quick and efficient experimentation of different ideas.</p>
+                <div class="img_wrapper dashed">
+                    <img src="../assets/algo_trading/information_flow.jpg" alt width="720" height="480"/>
+                    <h4>The information flow diagram for my backtester, designed for effiency and segmentation.</h4>
+                </div>
+                <p><b>DatabaseManager:</b> Queries the database for the data necessary for testing the current day.</p>
+                <p><b>Filter:</b> Defines a universe of stocks as a subset of all stocks by a simple metric, such as top 100 market cap, and sends the subset to the SignalProcessor.</p>
+                <p><b>SignalProcessor:</b> Uses more complicated metrics to identify potential buy or sell signals, and sends the subset to the Strategy.</p>
+                <p><b>Strategy:</b> Takes all the signals and decides which ones to buy or sell, and sends orders to the Brokerage.</p>
+                <p><b>Brokerage:</b> Receives orders and models the price at which the stocks are purchased or sold. Minute data can be used to model slipping prices, or a no-slip assumption can be made.</p>
+                <p><b>Portfolio:</b> Records the number of shares and purchase price as determined by the brokerage. Measures success of algorithm.</p>
+                <h2>Data Architecture</h2>
+                <p>My stock market data is saved partially in an SQLite Database (for datasets too large to hold in RAM) and
+                    partially in Pandas dataframes saved as pickles (for datasets < ~1GB). This data storage setup, combined with efficiently
+                    written and heavily multi-threaded code, allows for backtesting across ten years of market data in about 1-2 minutes on a laptop.
+                    I can test ideas faster than I can generate them... a wonderful issue to have for a project with so much potential.</p>
+                <p>The basic data features include open, high, low, close, volume, dividends, split_factor, market cap,
+                    market evaluation, p/e ratio, and p/b ratio. From these, many other features can be calculated such as
+                    moving averages, volume weighted price, resistance, momentum, etc.</p>
+                <h1>An Example</h1>
+                <p>Obviously, I won't be sharing any details on the specific strategy I am developing as that would leak all my hard work,
+                    but here's an example of using my backtester to test and improve a very simple algorithm.
             </div>
 
             <div class="footer">

@@ -7,14 +7,37 @@ p {
     line-height: 1.5em;
     text-align: justify;
 
-    padding: 10px 25px 0 25px;
+    padding: 0px 45px 20px 45px;
     border-left: 1px dashed #9bbec0;
 }
 
-h3 {
+h1 {
+    font-family: georgia;
+    font-weight: 600;
+    font-size: 36px;
+    color: #555;
+    margin-bottom: 0px;
     margin: 25px 0 0 0;
-    padding: 0 25px 10px 23px;
+    padding: 0 25px 10px 22px;
     border-left: 3px solid #008891;
+}
+
+h2 {
+    font-family: georgia;
+    font-weight: 600;
+    font-size: 28px;
+    color: #666;
+    margin: 0 0 0 0;
+    /* margin-bottom: 0px; */
+    padding: 0 25px 10px 23px;
+    border-left: 2px solid #9bbec0;
+}
+
+h4 {
+    font-family: helvetica;
+    font-weight: 400;
+    font-size: 16px;
+    color: #555;
 }
 
 .article_wrapper {
@@ -30,5 +53,35 @@ h3 {
 .img_wrapper {
     width: auto;
     text-align: center;
-    margin: 15px 25px;
+    padding: 15px 0px;
+}
+
+.dashed {
+    border-left: 1px dashed #9bbec0;
+}
+
+.category_entry_title {
+    font-family: georgia;
+    font-weight: 600;
+    font-size: 48px;
+    color: #555;
+    margin-right: 20px;
+}
+
+#in_progress {
+    font-family: "Courier New";
+    font-size: 24px;
+    color: blue;
+}
+
+#complete {
+    font-family: "Courier New";
+    font-size: 24px;
+    color: green;
+}
+
+#idle {
+    font-family: "Courier New";
+    font-size: 24px;
+    color: red;
 }

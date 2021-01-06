@@ -3,96 +3,212 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../css/main.css"/>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap');
-    </style>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+	<style>
+    html, body, .container {
+      background-color: white;
+      /* color: white; */
+    }
+
+    .label, tspan {
+      /* fill: white; */
+    }
+
+    .highlight {
+      fill: blue;
+      border: solid red 4px;
+    }
+
+    .container {
+        min-width: 1200px
+    }
+
+    #highline {
+      stroke: blue;
+      stroke-width: 2;
+    }
+	</style>
+    <link rel="stylesheet" href="../css/article.css"/>
+
+    <script type="text/javascript" src="../lib/d3.v5.min.js"></script>
+    <script type="text/javascript" src="../lib/d3-dsv.min.js"></script>
+    <script type="text/javascript" src="../lib/d3-tip.min.js"></script>
+    <script type="text/javascript" src="../lib/d3-legend.min.js"></script>
+    <script type="text/javascript" src="../lib/d3-geo-projection.v2.min.js"></script>
+    <script type="text/javascript" src="../lib/topojson.v2.min.js"></script>
+    <script src="https://kit.fontawesome.com/cdbee8177f.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <div id="body_wrapper">
-        <div id="name_space">
-            
-        </div>
-
         <div id="navbar">
             <div id="navwrap2">
                 <div id="navwrap3">
                     <div id="navwrap1">
-                        <a href="index.html" class="nav_btn">HOME</a>
-                        <a href="#data_science" class="nav_btn">DATA_SCIENCE</a>
-                        <a href="#software" class="nav_btn">SOFTWARE</a>
-                        <a href="#chemical_engineering" class="nav_btn">CHEMICAL_ENGINEERING</a>
-                        <a href="#writing" class="nav_btn">WRITING</a>
-                        <a href="#about" class="nav_btn">ABOUT</a>
+                        <a href="../index.html" class="nav_btn">HOME</a>
+                        <a href="../categories/data_science.html" class="nav_btn">DATA_SCIENCE</a>
+                        <a href="../categories/software.html" class="nav_btn">SOFTWARE</a>
+                        <a href="../categories/chemical_engineering.html" class="nav_btn">CHEMICAL_ENGINEERING</a>
+                        <a href="../about.html" class="nav_btn">ABOUT</a>
                     </div>
                 </div>
             </div>
         </div>
-
         <div class="content">
-            <div class="entry_grid">
-                <div class="port_entry" id="housing_predictions">
-                    <a href="housing_predictions.html">
-                        <div class="entry_img">
-                            <img src="assets/housing_predictions.png" alt width="360" height="240"/>
+            <div class="article_wrapper">
+                <span class="category_entry_title">Property Price Prediction</span>
+                <span id="complete">COMPLETE</span>
+                <h1>Objective</h1>
+                <p>To develop a machine learning algorithm that uses distances to landmarks to improve property value predictions in
+                    Fulton County, GA, and to present the results in an interactive visualization.</p>
+                <h1>Visualization</h1>
+                <p>The map on the left is color-coded by the field selected in 'Variable 1'. The graph on the right displays a scatterplot
+                    of Variable 1 and 2. The histogram beneath the scatterplot shows the distrubution of Variable 2.</p>
+                <p><b>Hover</b> over a datapoint on either scatterplot to display specific data about that property.<br>
+                <b>Select</b> variables from the two dropdown menus to change the axes in the graph on the right.<br>
+                <b>Prices</b> are displayed as number of 100,000s of dollars (ex. 420,000 --> 4.2)<br>
+                <b>Square footage</b> is displayed as number of 1000s of sq. ft. (ex. 1,500 --> 1.5)</p>
+                <div class="dashed">
+                    <div class="container">
+                        <div class="row py-3">
+                            <div class="col text-center">
+                                <h5 class="text-center">CSE6242 Team Project</h2>
+                                <span class="text-center">Sara C., Nicholas K., Cameron C., Nate K.</span>
+                            </div>
                         </div>
-                        <h3>Property Prices</h3>
-                        <p class="snippet">A machine learning project for predicting residential property value in Fulton County, Georgia, built with Python.</p>
-                    </a>
-                </div>
-                <div class="port_entry" id="slide_aligner">
-                    <a href="articles/slide_aligner.html">
-                        <div class="entry_img">
-                            <img src="assets/slide_aligner.png" alt width="360" height="240"/>
+                        <div class="row">
+                            <div class="col">
+                                <div class="row">
+                                    <div class="col text-center">
+                                        <label for="var1">Variable 1:</label>
+                                        <select name="var1" id="var1">
+                                            <option value="NN w landmarks" selected>Prediction, NN w/ Landmarks</option>
+                                            <option value="Linear w/ landmarks">Prediction, Linear w/ Landmarks</option>
+                                            <option value="NN w/o landmarks">Prediction, NN w/o Landmarks</option>
+                                            <option value="Linear w/o landmarks">Prediction, Linear w/o Landmarks</option>
+                                            <option value="apr. tot.">Truth, Appraised Total</option>
+                                            <!-- <option value="LandAppr">Land Appraisal</option>
+                                            <option value="LandAssess">Land Assessment</option>
+                                            <option value="TotAppr">Total Appraisal</option>
+                                            <option value="TotAssess">Total Assessment</option> -->
+                                            <option value="LivUnits">Livable Units</option>
+                                            <option value="bed rooms">Bedrooms</option>
+                                            <option value="baths">Baths</option>
+                                            <option value="sqft">Square Footage</option>
+                                            <option value="last sale amount">Last Sale Amount</option>
+                                            <option value="year built">Year Built</option>
+                                            <option value="total rooms">Total Rooms</option>
+                                            <option value="stories">Stories</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div id="mapPane"></div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-8">
+                                        <div id="detailPane"></div>
+                                    </div>
+                                    <div class="col-2">
+                                        <div id="baths"></div>
+                                    </div>
+                                    <div class="col-2">
+                                        <div id="beds"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="row">
+                                    <div class="col text-center">
+                                        <label for="var2">Variable 2:</label>
+                                        <select name="var2" id="var2">
+                                            <option value="NN w landmarks">Prediction, NN w/ Landmarks</option>
+                                            <option value="Linear w/ landmarks">Prediction, Linear w/ Landmarks</option>
+                                            <option value="NN w/o landmarks">Prediction, NN w/o Landmarks</option>
+                                            <option value="Linear w/o landmarks">Prediction, Linear w/o Landmarks</option>
+                                            <option value="apr. tot." selected>Truth, Appraised Total</option>
+                                            <!-- <option value="LandAppr">Land Appraisal</option>
+                                            <option value="LandAssess">Land Assessment</option>
+                                            <option value="TotAppr">Total Appraisal</option>
+                                            <option value="TotAssess">Total Assessment</option> -->
+                                            <option value="LivUnits">Livable Units</option>
+                                            <option value="bed rooms">Bedrooms</option>
+                                            <option value="baths">Baths</option>
+                                            <option value="sqft">Square Footage</option>
+                                            <option value="last sale amount">Last Sale Amount</option>
+                                            <option value="year built">Year Built</option>
+                                            <option value="total rooms">Total Rooms</option>
+                                            <option value="stories">Stories</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div id="chartPane"></div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div id="histPane"></div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <h3>Slide Aligner</h3>
-                        <p class="snippet">An application to align confocal microscope images into 2D and 3D models, built with Java and MATLAB.</p>
-                    </a>
-                </div>
-                <div class="port_entry" id="algo_trading">
-                    <a href="articles/algo_trading">
-                        <div class="entry_img">
-                            <img src="assets/stock_algo.png" alt width="360" height="240"/>
+                        <div class="row">
+                            <div class="col">
+
+                            </div>
                         </div>
-                        <h3>Stock Algo</h3>
-                        <p class="snippet">A project to find and exploit stock market trends based on historical trading data, built with Python and SQLite.</p>
-                    </a>
+                    </div>
                 </div>
-                <div class="port_entry" id="methanol_synthesis">
-                    <a href="articles/methanol_synthesis">
-                        <div class="entry_img">
-                            <img src="assets/methanol_plant.png" alt width="360" height="240"/>
-                        </div>
-                        <h3>Methanol Plant</h3>
-                        <p class="snippet">A design optimization and economic analysis of a tri-reforming methanol synthesis plant, built with ASPEN.</p>
-                    </a>
+                <p>Apologies for the visualization being slow to load. The visualization is handled entirely in-browser including the parsing
+                    of data from CSV files. Ideally I would just query a database or something else, but for a school project, this was sufficient.</p>
+                <h1>Machine Learning Models</h1>
+                <p>Although many different regression models were trained for this project, the visualization includes only the results of a linear
+                    regressor and a neural network. Each were trained both with and without data representing the distances to nearby key landmarks like schools and
+                    parks.
+                <h1>Results</h1>
+                <h2>Model Performance</h2>
+                <p>First, choose "Prediction, NN w/o Landmarks" as Variable 1 and "Truth, Appraised Total" as Variable 2.</p>
+                <p>If the model were perfect, the graph on the right would display a straight line because the prediction would always
+                    equal the true appraised total (y=x). However, you can see quite a lot of spread from a straight line.</p>
+                <p>Now choose "Prediction, NN w/ Landmarks" as Variable 1. Notice how much less deviation there is from a straight line
+                    behavior. The neural network model using landmarks is able to predict value much more accurately than without landmarks.
+                <h2>Weird square footage groupings</h2>
+                <p>First, choose "Prediction, NN w/ Landmarks" as Variable 1 and "Square footage" as Variable 2. You should see something like the graph below.</p>
+                <div class="img_wrapper dashed">
+                    <img src="../assets/housing_predictions/square_footage.png" alt/>
+                    <h4>Prediction, NN w/ Landmarks as a function of Square Footage</h4>
                 </div>
-                <div class="port_entry" id="tourist_agency">
-                    <a href="articles/tourist_agency">
-                        <div class="entry_img">
-                        </div>
-                        <h3>SQL Database App</h3>
-                        <p class="snippet">A database and web application for an Atlanta travel agency, built with MySQL, Python, HTML, and CSS.</p>
-                    </a>
-                </div>
-                <div class="port_entry" id="us">
-                    <a href="articles/us">
-                        <div class="entry_img">
-                            <img src="assets/us_concept.png" alt width="360" height="240"/>
-                        </div>
-                        <h3>Us</h3>
-                        <p class="snippet">A small indie-game exploring storytelling with art and music instead of words, built with Java and GLSL.</p>
-                    </a>
-                </div>
-                <div class="port_entry" id="writing">
-                    <a href="articles/writing">
-                        <div class="entry_img">
-                            <img src="assets/poetry.jpg" alt width="360" height="240"/>
-                        </div>
-                        <h3>Creative Writing</h3>
-                        <p class="snippet">A small sample of the fruits of one of my most important pastimes.</p>
-                    </a>
-                </div>
+                <p>Notice how there appears to be three separate clusters or lines formed on the right graph? Now drag your mouse
+                    over these clusters (so the large blue point moves around) and observe where those points are located in the
+                    map to the left. The lowest cluster corresponds to points geographically southwest, the middle cluster to the geographic north, and
+                    the top cluster to the geographic center.</p>
+                <p>Now switch Variable 1 to "Truth, Appraised Total". Although the clusters are not as defined, when you drag your
+                    mouse over the datapoints on the right graph, you see a similar behavior on the map to the left.</p>
+                <p>What does this mean? It shows us that our neural network model is changing the predictive weight of square footage based on the distance to landmarks.
+                    This same behavior is not observed when plotting "Prediction, Linear w/ Landmarks" against "Square Footage", because the parameter weights
+                    cannot change dynamically like that in a linear model. It follows that the neural network model performs better than the linear model,
+                    but still does not account for enough of the variance in the true values.</p>
+                <h2>Takeaways</h2>
+                <p>Much like with <a href="https://en.wikipedia.org/wiki/Anscombe%27s_quartet">Anscombe's quartet</a>, visualization is absolutely vital. Machine learning and data analysis are both great ways of
+                    modeling data and taking advantage of trends and correlations,
+                    but you MUST always visualize the results and see what they are telling you. Why does one model perform
+                    better than the other? Why does this model seem to overestimate a certain domain? Visualization can help determine those
+                    answers with more certainty than simple metrics like correlation, R^2, standard deviation, etc.
+                <h1>Data Scraping</h1>
+                <p>All the data used in this project is publicly available by law through tax records. However, the Fulton County websites (<a href="https://fultonassessor.org/">B.O.A.</a> 
+                    and <a href="https://www.fultoncountyga.gov/commissioners">B.O.C.</a>) which hold and distribute
+                    this information are only GUI based and have no publicly available API. Additionally, any data export from the GUI is limited to only about a hundred properties
+                    out of the 360,000 total, and all inqueries with the boards' employees were unsuccessful in retrieving the data.</p>
+                <p>Thus, to gather the data for this project, I wrote a web scraper taking advantage of the patterns I found in their website urls to bombard the Fulton County Board of Assessors
+                    ASP.NET web app with queries for all the tax parcels. The end result was a complete dataset of all 360,000 registered property tax parcels in fulton county
+            </div>
+            <div class="footer">
+                <p>© 2021 Nicholas Klavohn. All rights reserved.</p>
             </div>
         </div>
     </div>
@@ -114,6 +230,432 @@
             navbar.classList.remove("sticky");
         }
     }
+    </script>
+
+    <script>
+
+    var margin = {top: 40, right: 40, bottom: 40, left: 40}
+      , width = 380
+      , height = 420
+      , mapMargin = {top: 30, right: 30, bottom: 30, left: 30}
+      , mapWidth = 480
+      , mapHeight = 420;
+
+    var mapSVG = d3.select("#mapPane").append("svg")
+        .attr("width", mapWidth + mapMargin.left + mapMargin.right)
+        .attr("height", mapHeight + mapMargin.left + mapMargin.right)
+      .append("g")
+        .attr("transform", "translate(" + mapMargin.left + "," + mapMargin.top + ")");
+
+    var chartSVG = d3.select("#chartPane").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    var histSVG = d3.select("#histPane").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", 100 + margin.bottom)
+      .append("g")
+        .attr("transform", "translate(" + margin.left + "," + 0 + ")");
+
+    var color = d3.scaleSequential(d3.interpolateRdYlGn);
+
+    function updateDetails(d) {
+      highlight = d.ParcelID;
+
+      bedHtml = "<b>Beds:</b></br> ";
+      for (var i = 0; i < d['bed rooms']; i++) {
+        bedHtml += '<i class="fas fa-bed px-1"></i>';
+        if (i % 2 == 1) {
+          bedHtml += '</br>';
+        }
+      }
+
+      bathHtml = "<b>Baths:</b></br> ";
+      for (var i = 0; i < d['baths']; i++) {
+        bathHtml += '<i class="fas fa-bath px-1"></i>';
+        if (i % 2 == 1) {
+          bathHtml += '</br>';
+        }
+      }
+      if (d['baths'] % 1 > 0) {
+        bathHtml += '<i class="fas fa-toilet px-1"></i>';
+      }
+
+      detailHtml = "<b>" + global_var1_name + ":</b> " + d[global_var1].toPrecision(4)
+      + "<br/><b>" + global_var2_name + ":</b> " + d[global_var2].toPrecision(4)
+      + "<br/><b>Address: </b> " + d['Address']
+      + "<br/><b>Owner: </b> " + d['Owner'];
+
+      d3.select("#detailPane")
+        .html(detailHtml);
+
+      d3.select("#detailPane")
+        .append("div")
+        .attr("class","baths")
+        .html();
+
+      d3.select("#beds").html(bedHtml);
+      d3.select("#baths").html(bathHtml);
+
+      mapSVG.selectAll(".highlight")
+        .classed("highlight", false)
+        .attr("r", 2);
+      mapSVG.select(".map")
+        .selectAll("circle")
+        .filter((d2) => {
+          return d2.ParcelID == highlight;
+        })
+        .classed("highlight", true)
+        .attr("r", 5)
+        .raise()
+      chartSVG.selectAll(".highlight")
+        .classed("highlight", false)
+        .attr("r", 2);
+      chartSVG.select(".chart")
+        .selectAll("circle")
+        .filter((d2) => {
+          return d2.ParcelID == highlight;
+        })
+        .classed("highlight", true)
+        .attr("r", 5)
+        .raise()
+      histSVG.select('#highline')
+        .attr("x1", global_chart_xScale(d[global_var2]))
+        .attr("y1", 0)
+        .attr("x2", global_chart_xScale(d[global_var2]))
+        .attr("y2", 100);
+    }
+
+    var global_world,
+        global_landmarks,
+        global_corr,
+        global_var1 = "NN w landmarks",
+        global_var1_name = "Prediction, NN w/ Landmarks",
+        global_var1_arr = [],
+        global_var2 = "apr. tot.",
+        global_var2_name = "Truth, Appraised Total",
+        global_var2_arr = [];
+
+    document.getElementById("var1").onchange = (e) => {
+      global_var1 = e.target.value;
+      global_var1_name = e.target.options[e.target.selectedIndex].text
+      updateVar1();
+      createMap();
+      createChart();
+    }
+
+    document.getElementById("var2").onchange = (e) => {
+      global_var2 = e.target.value;
+      global_var2_name = e.target.options[e.target.selectedIndex].text
+      updateVar2();
+      createChart();
+    }
+
+    function updateVar1() {
+      global_var1_arr = [];
+      if (global_var1 == "year built") {
+        global_world.forEach((feature) => {
+          if (feature[global_var1] != 0) {
+            global_var1_arr.push(feature[global_var1]);
+          }
+        })
+      } else {
+        global_world.forEach((feature) => {
+          global_var1_arr.push(feature[global_var1]);
+        })
+      }
+      global_var1_arr = global_var1_arr.sort(d3.ascending);
+
+      color = color.domain([d3.quantile(global_var1_arr, .05), d3.quantile(global_var1_arr, .95)]);
+    }
+
+    function updateVar2() {
+      global_var2_arr = [];
+      if (global_var2 == "year built") {
+        global_world.forEach((feature) => {
+          if (feature[global_var2] != 0) {
+            global_var2_arr.push(feature[global_var2]);
+          }
+        })
+      } else {
+        global_world.forEach((feature) => {
+          global_var2_arr.push(feature[global_var2]);
+        })
+      }
+      global_var2_arr = global_var2_arr.sort(d3.ascending);
+    }
+
+    // var projection = d3.geoMercator();
+    // var path = d3.geoPath();
+
+    function loadMap() {
+        // projection = projection.fitExtent([[0, 0], [mapWidth, mapHeight]], global_world);
+        // path = path.projection(projection).pointRadius(2);
+    }
+
+    var highlight = "";
+
+    // var mapPoints = [
+    //   [33.640939, -84.426661],
+    //   [33.777473, -84.398498],
+    //   [33.749533, -84.412426],
+    //   [33.875811, -84.335049],
+    //   [33.786826, -84.373861],
+    //   [33.870575, -84.390847],
+    //   [33.990618, -84.365199],
+    //   [33.802847, -84.377197],
+    //   [33.86604, -84.349556],
+    //   [400000, 670000]
+    // ];
+
+    function createMap() {
+        var xScale = d3.scaleLinear()
+            .domain(d3.extent(global_world.map((d) => d.x)))
+            .range([0, mapWidth]);
+        var yScale = d3.scaleLinear()
+            .domain(d3.extent(global_world.map((d) => d.y)))
+            .range([height, 0]);
+
+        mapSVG.html("");
+        mapSVG.append("g")
+          .attr("class", "map")
+          .selectAll("circle")
+          .data(global_world)
+          .enter().append("circle")
+            .attr("cx", function(d) {
+              if (isNaN(d.x)) {
+                return xScale(0);
+              }
+              return xScale(d.x);
+            })
+            .attr("cy", function(d) {
+              if (isNaN(d.y)) {
+                return yScale(0);
+              }
+              return yScale(d.y);
+            })
+            .attr("fill", function(d) {
+              if (d[global_var1]) {
+                return color(d[global_var1]);
+              } else {
+                return "grey";
+              }
+            })
+            .attr("r", 2)
+            .on('mouseover', updateDetails)
+          .append("title")
+            .text(function(d) {
+              if (d.ParcelID) {
+                return d.ParcelID;
+              } else {
+                return "???";
+              }
+            });
+
+        var processed_points = [];
+        var processed_line = [];
+        global_landmarks.forEach((p) => {
+          if (p[0].includes("beltline")) {
+            processed_line.push(p);
+          } else {
+            processed_points.push(p);
+          }
+        });
+
+        var symbolGenerator = d3.symbol()
+          .type(d3.symbolStar)
+          .size(80);
+
+        mapSVG.append("g").attr("class","symbols")
+
+        var pathData = symbolGenerator();
+
+        var points = d3.select(".symbols")
+          .selectAll("path")
+          .data(processed_points)
+          .enter().append("path")
+            .attr("fill", "blue")
+            .attr("d", d3.symbol().type(d3.symbolStar).size(40))
+            .attr("transform", function(d) { return "translate(" + xScale(d[2]) + "," + yScale(d[1]) + ")"; });
+
+        var lineFunc = d3.line().x((d) => xScale(d[2])).y((d) => yScale(d[1]));
+
+        var line = d3.select(".symbols")
+          .append("path")
+          .attr("d", lineFunc(processed_line))
+          .attr("stroke", "blue")
+          .attr("stroke-width", 4)
+          .attr("fill", "none");
+
+        var legend = d3.legendColor()
+          .labelFormat(d3.format(".0f"))
+          .title(global_var1_name)
+          .titleWidth(100)
+          .scale(color);
+
+        mapSVG.append("g")
+          .attr("class", "legendQuant")
+          .attr("transform", "translate(20,20)");
+
+        mapSVG.select(".legendQuant")
+          .call(legend);
+    }
+
+    var global_chart_xScale;
+
+    function createChart() {
+      global_chart_xScale = d3.scaleLinear()
+          .domain([d3.quantile(global_var2_arr, 0), d3.quantile(global_var2_arr, 0.98)])
+          .range([0, width]);
+      var yScale = d3.scaleLinear()
+          .domain([d3.quantile(global_var1_arr, 0), d3.quantile(global_var1_arr, 0.98)])
+          .range([height, 0]);
+
+      chartSVG.html("");
+      chartSVG.append("g")
+        .attr("class", "chart")
+        .selectAll("circle")
+        .data(global_world)
+        .enter().append("circle")
+          .attr("cx", function(d) {
+            if (isNaN(d[global_var2])) {
+              return global_chart_xScale(0);
+            }
+            return global_chart_xScale(d[global_var2]);
+          })
+          .attr("cy", function(d) {
+            if (isNaN(d[global_var1])) {
+              return yScale(0);
+            }
+            return yScale(d[global_var1]);
+          })
+          .attr("fill", function(d) {
+            return color(d[global_var1]);
+          })
+          .attr("r", 2)
+          .on('mouseover', updateDetails);
+
+      var xAxis = d3.axisBottom()
+        .scale(global_chart_xScale)
+        .tickFormat(d3.format(".2s"));
+
+      var yAxis = d3.axisLeft()
+        .scale(yScale)
+        .tickFormat(d3.format(".2s"));
+
+      chartSVG.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + (height) + ")")
+        .call(xAxis);
+
+      chartSVG.append("g")
+        .attr("class", "y axis")
+        .attr("transform", "translate(" + 0 + ", 0)")
+        .call(yAxis);
+
+      chartSVG.append("text")
+          .attr("transform",
+                "translate(" + (width - margin.right) + " ," +
+                               (height - margin.top) + ")")
+          .style("text-anchor", "middle")
+          .text("R^2 = " + (+global_corr[global_var1][global_var2]).toPrecision(2));
+
+      chartSVG.append("g")
+          .attr("transform",
+                "translate(" + (-31) + " ," +
+                               (height/2) + ")")
+          .append("text")
+          .attr("transform", "rotate(-90)")
+          .attr("font-size", "12")
+          .style("text-anchor", "middle")
+          .text(global_var1_name);
+
+      chartSVG.append("text")
+          .attr("transform",
+                "translate(" + (width/2) + " ," +
+                               (height + 32) + ")")
+          .attr("font-size", "12")
+          .style("text-anchor", "middle")
+          .text(global_var2_name);
+
+      var histogram = d3.histogram()
+        .value(function(d) { return d; })
+        .domain(global_chart_xScale.domain())
+        .thresholds(global_chart_xScale.ticks(10));
+      var bins = histogram(global_var2_arr);
+      // console.log(bins);
+      var y = d3.scaleLinear()
+        .range([100, 0])
+        .domain([0, d3.max(bins, function(d) { return d.length; })]);
+      //
+
+      var histColor = d3.scaleSequential(d3.interpolateViridis)
+        .domain([0, d3.max(bins, function(d) { return d.length; })]);
+
+
+      histSVG.html("");
+      histSVG.append("g")
+          .attr("class", "y axis")
+          .attr("transform", "translate(" + 0 + ", 0)")
+          .call(d3.axisLeft(y).ticks(2));
+      histSVG.selectAll("rect")
+        .data(bins)
+        .enter()
+        .append("rect")
+          .attr("x", 1)
+          .attr("transform", function(d) { return "translate(" + global_chart_xScale(d.x0) + "," + y(d.length) + ")"; })
+          .attr("width", function(d) { return global_chart_xScale(d.x1) - global_chart_xScale(d.x0) -1 ; })
+          .attr("height", function(d) { return 100 - y(d.length); })
+          .attr("fill", function(d) {
+            return histColor(d.length);
+          });
+      histSVG.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + 100 + ")")
+        .call(xAxis);
+      histSVG.append('line')
+        .attr("id", "highline")
+        .attr("x1", 0)
+        .attr("y1", 0)
+        .attr("x2", 0)
+        .attr("y2", 100);
+    }
+
+    num_vars = ['apr. tot.', 'bed rooms', 'baths', 'sqft', 'LandAcres', 'NN w landmarks', 'Linear w/ landmarks', 'NN w/o landmarks', 'Linear w/o landmarks', 'TotAssess', 'LandAssess', 'ImprAssess', 'TotAppr', 'LandAppr', 'ImprAppr', 'LivUnits', 'Shape__Are', 'last sale amount', 'year built', 'total rooms', 'bath', 'half bath', 'basement', 'apr. land', 'apr. bldg', 'ass. tot.', 'stories', 'x2', 'y2'];
+    function ready([world, corr]) {
+      global_world = world;
+      global_world.forEach((d) => {
+        num_vars.forEach((n) => {
+          d[n] = +d[n];
+          // if (n.includes('landmark') || n.includes('apr.')) {
+          //   d[n] = d[n]*100000;
+          // }
+        })
+      });
+      global_landmarks = [];
+      // landmarks.forEach((l) => {
+      //   // console.log(l)
+      //   global_landmarks.push([l['location'], +l['lat'], +l['lon']]);
+      // });
+      global_corr = {};
+      corr.forEach((d) => {
+        global_corr[d[""]] = d;
+      })
+      updateVar1();
+      updateVar2();
+      loadMap();
+      createMap();
+      createChart();
+    }
+
+    Promise.all([
+        d3.csv("../data/TPP.csv"),
+        d3.csv("../data/corr.csv")
+    ]).then(
+        ready
+    );
     </script>
 </body>
 

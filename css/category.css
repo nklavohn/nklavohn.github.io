@@ -108,3 +108,12 @@
 .link > a {
     all: initial;
 }
+
+#category_entry_languages {
+    font-family: "Courier New";
+    font-weight: 600;
+    font-size: 20px;
+    color: #008891;
+    margin: auto;
+    padding: 10px 0px;
+}
