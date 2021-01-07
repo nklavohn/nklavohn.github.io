@@ -88,10 +88,6 @@
                                             <option value="NN w/o landmarks">Prediction, NN w/o Landmarks</option>
                                             <option value="Linear w/o landmarks">Prediction, Linear w/o Landmarks</option>
                                             <option value="apr. tot.">Truth, Appraised Total</option>
-                                            <!-- <option value="LandAppr">Land Appraisal</option>
-                                            <option value="LandAssess">Land Assessment</option>
-                                            <option value="TotAppr">Total Appraisal</option>
-                                            <option value="TotAssess">Total Assessment</option> -->
                                             <option value="LivUnits">Livable Units</option>
                                             <option value="bed rooms">Bedrooms</option>
                                             <option value="baths">Baths</option>
@@ -130,10 +126,6 @@
                                             <option value="NN w/o landmarks">Prediction, NN w/o Landmarks</option>
                                             <option value="Linear w/o landmarks">Prediction, Linear w/o Landmarks</option>
                                             <option value="apr. tot." selected>Truth, Appraised Total</option>
-                                            <!-- <option value="LandAppr">Land Appraisal</option>
-                                            <option value="LandAssess">Land Assessment</option>
-                                            <option value="TotAppr">Total Appraisal</option>
-                                            <option value="TotAssess">Total Assessment</option> -->
                                             <option value="LivUnits">Livable Units</option>
                                             <option value="bed rooms">Bedrooms</option>
                                             <option value="baths">Baths</option>
@@ -200,7 +192,7 @@
                     better than the other? Why does this model seem to overestimate a certain domain? Visualization can help determine those
                     answers with more certainty than simple metrics like correlation, R^2, standard deviation, etc.
                 <h1>Data Scraping</h1>
-                <p>All the data used in this project is publicly available by law through tax records. However, the Fulton County websites (<a href="https://fultonassessor.org/">B.O.A.</a> 
+                <p>All the data used in this project is publicly available by law through tax records. However, the Fulton County websites (<a href="https://fultonassessor.org/">B.O.A.</a>
                     and <a href="https://www.fultoncountyga.gov/commissioners">B.O.C.</a>) which hold and distribute
                     this information are only GUI based and have no publicly available API. Additionally, any data export from the GUI is limited to only about a hundred properties
                     out of the 360,000 total, and all inqueries with the boards' employees were unsuccessful in retrieving the data.</p>
@@ -387,28 +379,12 @@
       global_var2_arr = global_var2_arr.sort(d3.ascending);
     }
 
-    // var projection = d3.geoMercator();
-    // var path = d3.geoPath();
-
     function loadMap() {
         // projection = projection.fitExtent([[0, 0], [mapWidth, mapHeight]], global_world);
         // path = path.projection(projection).pointRadius(2);
     }
 
     var highlight = "";
-
-    // var mapPoints = [
-    //   [33.640939, -84.426661],
-    //   [33.777473, -84.398498],
-    //   [33.749533, -84.412426],
-    //   [33.875811, -84.335049],
-    //   [33.786826, -84.373861],
-    //   [33.870575, -84.390847],
-    //   [33.990618, -84.365199],
-    //   [33.802847, -84.377197],
-    //   [33.86604, -84.349556],
-    //   [400000, 670000]
-    // ];
 
     function createMap() {
         var xScale = d3.scaleLinear()
@@ -589,7 +565,6 @@
       var y = d3.scaleLinear()
         .range([100, 0])
         .domain([0, d3.max(bins, function(d) { return d.length; })]);
-      //
 
       var histColor = d3.scaleSequential(d3.interpolateViridis)
         .domain([0, d3.max(bins, function(d) { return d.length; })]);
@@ -629,16 +604,10 @@
       global_world.forEach((d) => {
         num_vars.forEach((n) => {
           d[n] = +d[n];
-          // if (n.includes('landmark') || n.includes('apr.')) {
-          //   d[n] = d[n]*100000;
-          // }
         })
       });
       global_landmarks = [];
-      // landmarks.forEach((l) => {
-      //   // console.log(l)
-      //   global_landmarks.push([l['location'], +l['lat'], +l['lon']]);
-      // });
+
       global_corr = {};
       corr.forEach((d) => {
         global_corr[d[""]] = d;
