@@ -41,6 +41,19 @@
     color: red;
 }
 
+#concept {
+    font-family: "Courier New";
+    font-size: 24px;
+    color: blue;
+}
+
+#status {
+    font-family: "Courier New";
+    font-weight: 300;
+    font-size: 24px;
+    color: #777;
+}
+
 #top_title {
     font-family: arial;
     font-size: 64px;
@@ -70,6 +83,7 @@
     display: flex;
     vertical-align: center;
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .category_entry_thumbnail {
@@ -93,7 +107,6 @@
     font-weight: 600;
     font-size: 30px;
     color: #555;
-    margin-right: 20px;
 }
 
 .category_entry_snippet {

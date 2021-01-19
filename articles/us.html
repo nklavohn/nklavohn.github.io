@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../css/main.css"/>
+    <link rel="stylesheet" href="../css/article.css"/>
+</head>
+
+<body>
+    <div id="body_wrapper">
+        <div id="name_space_empty">
+        </div>
+
+        <div class="sticky" id="navbar">
+            <div id="navwrap2">
+                <div id="navwrap3">
+                    <div id="navwrap1">
+                        <a href="../index.html" class="nav_btn">FEATURED</a>
+                        <a href="../categories/data_science.html" class="nav_btn">DATA_SCIENCE</a>
+                        <a href="../categories/software.html" class="nav_btn">SOFTWARE</a>
+                        <a href="../categories/chemical_engineering.html" class="nav_btn">CHEMICAL_ENGINEERING</a>
+                        <a href="../about.html" class="nav_btn">ABOUT</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="article_wrapper">
+                <span class="category_entry_title">Us - Indie Game</span>
+                <span id="concept">CONCEPT</span>
+                <h1>Objective</h1>
+                <p>To create a unique video game that tells a story without the use of words, relying instead on art and music.</p>
+                <div class="dashed img_wrapper">
+                    <img src="../assets/us/us-1.jpg" alt width="1000" height="500"/>
+                    <h4>A piece of concept art for the game, wherein a portal to the dream world is opening.</h4>
+                </div>
+                <h1>Core Gameplay</h1>
+                <p>You play the role of a melancholic man in a blue world struggling with the death of his wife. Ravaged by nightmares,
+                    he has trouble distinguishing what is real and fake as memories of his wife distort and fade with time.</p>
+                <p>The central mechanic in this game is to use little keepsakes and relics from your marriage to transport yourself
+                    between the real world and dream world. By interacting with objects in either of these parallel dimensions,
+                    you must solve puzzles to move further along and deeper into your memories, hoping to find and heal the source
+                    of your sorrows.</p>
+                <h2>Opening Scene</h2>
+                <p>The game opens with a haunting dream remembering the death of your wife. In the dream, she appears
+                    without a face, instead having only two gaping holes for eyes and nothing else.</p>
+                <p>You wake up scared, sad, trying to remember what your wife looked like or smelled like or sounded like, but she's
+                    been gone for too long and you can no longer remember. You wish you had not burned all your pictures in a depressed
+                    fit a few months back, because now you have nothing. The pain is unbearable, you go looking for a smoke somewhere
+                    in your room.</p>
+                <p>The world is blue and purple, full of sadness. Stumbling through your bedside table looking for a box of cigarettes, you find a single
+                    picture of your wife that survived your purge, and you are transported into the dream world, a world of red and pink and orange.</p>
+                <h1>Concept Art - Sketches</h1>
+                <div class="dashed img_wrapper">
+                    <img src="../assets/us/us-0.jpg" alt width="1000" height="500"/>
+                    <br>
+                    <br>
+                    <img src="../assets/us/us-2.jpg" alt width="1000" height="500"/>
+                    <br>
+                    <br>
+                    <img src="../assets/us/us-3.jpg" alt width="1000" height="500"/>
+                    <h4>Concept sketches for the game.</h4>
+                </div>
+                <h1>Status</h1>
+                <p>This game is very much only in its concept stages. I've written a story outline, drawn concept art, and composed
+                    some basic music for use in the game, but don't have anything presentably playable yet. After graduating college,
+                    I hope put more time into this and work with a team to develop the game.</p>
+                <p>Two games that have inspired me a lot are Inside for its incredible puzzle-solving gameplay and Gris for its beautiful artstyle. I hope to
+                    take my own spin on some of the ideas of those games and combine it with my own artstyle to culminate a wonderful game experience.</p>
+                <h1>Final product</h1>
+                <p>The images above are quick, 15-30 minute sketches. The final product will have more detailed art while
+                    retaining a distinctly brush-stroked look, with an appearance something like displayed below:</p>
+                <div class="dashed img_wrapper">
+                    <img src="../assets/us/us-4.png" alt width="1000" height="500"/>
+                    <h4>A detailed, full-production concept for the game environment. Not shown is the playable character
+                        or interactions between the two worlds.</h4>
+                </div>
+            </div>
+
+            <div class="footer">
+                <p>© 2021 Nicholas Klavohn. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    // When the user scrolls the page, execute myFunction
+    window.onscroll = function() {myFunction()};
+
+    // Get the navbar
+    var navbar = document.getElementById("navbar");
+    var name_space = document.getElementById('name_space_empty');
+
+    //when navbar gets to the top of the page (height of name_space), make it stick to the top
+    function myFunction() {
+        var height = name_space.clientHeight;
+        if (window.pageYOffset >= height) {
+            navbar.classList.add("sticky")
+        } else {
+            navbar.classList.remove("sticky");
+        }
+    }
+    </script>
+</body>
+
+</html>

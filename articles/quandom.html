@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../css/main.css"/>
+    <link rel="stylesheet" href="../css/article.css"/>
+</head>
+
+<body>
+    <div id="body_wrapper">
+        <div id="name_space_empty">
+        </div>
+
+        <div class="sticky" id="navbar">
+            <div id="navwrap2">
+                <div id="navwrap3">
+                    <div id="navwrap1">
+                        <a href="../index.html" class="nav_btn">FEATURED</a>
+                        <a href="../categories/data_science.html" class="nav_btn">DATA_SCIENCE</a>
+                        <a href="../categories/software.html" class="nav_btn">SOFTWARE</a>
+                        <a href="../categories/chemical_engineering.html" class="nav_btn">CHEMICAL_ENGINEERING</a>
+                        <a href="../about.html" class="nav_btn">ABOUT</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="article_wrapper">
+                <span class="category_entry_title">Quondam - Indie Game</span>
+                <span id="idle">IDLE</span>
+                <h1>Definition</h1>
+                <p><b>Quondam:</b> (adj.) that once was, former</p>
+                <div class="dashed img_wrapper">
+                    <img src="../assets/quandom/desert.jpg" alt width="1000" height="400"/>
+                    <h4>A snapshot of one of the opening scenes from the game.</h4>
+                    <img src="../assets/quandom/base_camp.jpg" alt width="1000"/>
+                    <h4>Creation of the base camp within my custom level editor.</h4>
+                </div>
+                <p><i>Quandom</i> is a game telling a story of war in a ravaged world
+                    where all the game text is written as poetry. Through metroidvania-like gameplay, you experience
+                    and reflect on the atrocities of war as you struggle to keep going.</p>
+                <h2>Core gameplay loop</h2>
+                <p> The game is a short campaign told in chapters
+                    with four different playable characters. You only experience things from the perspective of the character you choose, and
+                    therefore must play again with different characters to discover the rest of the story.</p>
+                <p>As an example, if your friend goes off into battle
+                and never returns, you may only hear rumors and stories about what happened. The only way to know for certain if he's alive or dead
+                is to play the campaign as him and experience the events yourself. Or, if your commander returns in shock and unable to communicate what atrocities he saw, you won't know how he got to that state until
+                you play from his perspective.</p>
+                <p><b>In war, as people die and go missing, we are left with little more than stories and hear-say. Often, we can't ever know
+                    what happened because no one was there to see it.</b></p>
+
+                <h1>Custom-Built Level Editor</h1>
+                <h2>Overview</h2>
+                <p>I created a level editor to allow me to build the game levels with an efficient GUI. I decided to create my own instead
+                    of using existing software (like Tiled) so that I could learn the fundamentals of serialization, generation and loading of
+                    save files, entity pools, and proper ways of batching GPU draws. Also, by virtue of designing my own application, I could tailor
+                    it exactly to my needs. </p>
+                <p> From within the editor, assets are added in layers with parallax, hitbox meshing is manually added into the central graphical layer,
+                    entities are given spawn locations, etc. I posted a number of dev-logs for this project onto Youtube. Check out
+                    one for my level editor below:</p>
+                <div class="dashed img_wrapper">
+                    <iframe width="1000" height="563" src="https://www.youtube.com/embed/8Aie6ajMAiw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <h4>A video showcasing the processing of creating a level within my level editor.</h4>
+                </div>
+                <p>Most of my devlogs are unlisted now, but they are still accessible through the playlists on the main channel page
+                    if you are interested in seeing any others. Although development continued for another 4 or 5 months after the video
+                    imbedded above, I had started college and did not have the space or time to record the devlogs anymore.
+                <h2>Code Architecture</h2>
+                <p>Both the editor and game engine were developed in Java using libGDX, a lightweight and versatile game-development application
+                framework. I learned a lot during that process, and if I were to continue onwards I would consider breaking free from the
+                libGDX framework entirely to learn the intimacies of dealing with the CPU and GPU more directly.</p>
+                <p>The <a href="https://libgdx.badlogicgames.com/">libGDX framework</a> is mostly in its maintenance phase now and has been
+                    used for the development of <a href="https://itch.io/games/made-with-libgdx">hundreds of published games</a>.</p>
+                <h1>Into the Code</h1>
+                <h2>2D light casting</h2>
+                <p>There are a lot of ways light can be cast in two dimensions. With the strength of modern computers, you can honestly get away
+                    with just sending a bunch of lines out from the light source and seeing where they intersect with your entities or environment.
+                    But this is certainly not efficient. How many rays do you cast? What's the spacing? How do you avoid inaccuracies near corners?</p>
+                <p>Perhaps the 'best' way in a 2D engine is to cast lines from the light source to each vertex, and test for intersections. **This wonderfully lends itself
+                    to animation of the umbra and penumbra as well.</p>
+                <div class="dashed img_wrapper">
+                    <img src="../assets/quandom/ray_casting.png" alt width="600" height="400"/>
+                    <h4>Sending light rays (blue) to the vertices of all shapes, blocking light if an edge is intersected (red)</h4>
+                </div>
+                <p>But, my assets are hand-drawn images, not geometric shapes with clear corners. Defining vertices would likely be both messy
+                    and tedious. Instead, I used some geometry and linear algebra techniques to transform rectangular space into polar space with
+                    the light source at coordinates (r=0, theta=0). Casting light in polar space involves only straight lines in one direction with
+                    whole number pixels, and is therefore much more computationally friendly.<p>
+                <div class="dashed img_wrapper">
+                    <img src="../assets/quandom/transform.png" alt width="494" height="198"/>
+                    <img src="../assets/quandom/cast_light.jpg" alt/>
+                    <h4>Transforming rectangular space (left) to polar space (right)</h4>
+                </div>
+                <p>All of this processing can be parallelized and sent to the GPU with the GLSL shader program shown above,
+                    making this a wonderful solution for my needs. Below is the final product:</p>
+                <div class="dashed img_wrapper">
+                    <img src="../assets/quandom/shaders_moving.gif" alt width="800" height="600"/>
+                </div>
+                <h1>Poetry Example</h1>
+                <p>
+                Forever I have pondered why we fight,<br>
+                What purpose leads our enemies at night?<br>
+                What chemical release can blur foresight<br>
+                And stop us seeing danger we incite?<br>
+                <br>
+                <i>It does not matter what is wrong and right<br>
+                You only do exactly what is said</i><br>
+                <br>
+                Upon this cot Lieutenant Roy was dead.<br>
+                Some sewed his cap, a target on his head.<br>
+                Some sewed his wounds, infected in his bed.<br>
+                All share the guilt of those who drown in red.<br>
+                <br>
+                <i>Surrender now? Let’s send more troops instead. <br>
+                Persistent fighting leads to victory</i><br>
+                <br>
+                Daily creation of PTSD<br>
+                Full deprivation of the love we need.<br>
+                No! No! I can no longer bear to see<br>
+                Further denial of morality.<br>
+                <br>
+                <i>It’s all for glory of our home country<br>
+                You will find fame, the ultimate grand prize.</i><br>
+                <br>
+                Explosion in our camp precedes the cries<br>
+                I see my men blown up by the surprise.<br>
+                I bite my lip as tears pour from my eyes.<br>
+                All are responsible for this demise.<br>
+                </p>
+                <p>- March 2017</p>
+
+                <h1>Continuation?</h1>
+                <p>I doubt this project will ever be finished. I enjoyed working on it thoroughly and learned a lot as well,
+                    but I am more likely at this point to put development time into <a href="us.html">Us</a> than this game. I began
+                    this project before college, and the types of games I play and am interested in have changed a lot.</p>
+                <p>By putting some glimpses of the game here, hopefully the time I put into this project won't be forgotten.</p>
+            </div>
+
+
+
+            <div class="footer">
+                <p>© 2021 Nicholas Klavohn. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    // When the user scrolls the page, execute myFunction
+    window.onscroll = function() {myFunction()};
+
+    // Get the navbar
+    var navbar = document.getElementById("navbar");
+    var name_space = document.getElementById('name_space_empty');
+
+    //when navbar gets to the top of the page (height of name_space), make it stick to the top
+    function myFunction() {
+        var height = name_space.clientHeight;
+        if (window.pageYOffset >= height) {
+            navbar.classList.add("sticky")
+        } else {
+            navbar.classList.remove("sticky");
+        }
+    }
+    </script>
+</body>
+
+</html>
