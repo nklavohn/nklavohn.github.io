@@ -3,26 +3,22 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../css/main.css"/>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap');
-    </style>
+    <link rel="stylesheet" href="../css/article.css"/>
 </head>
 
 <body>
     <div id="body_wrapper">
-        <div id="name_space">
-
+        <div id="name_space_empty">
         </div>
 
-        <div id="navbar">
+        <div class="sticky" id="navbar">
             <div id="navwrap2">
                 <div id="navwrap3">
                     <div id="navwrap1">
-                        <a href="../index.html" class="nav_btn">HOME</a>
+                        <a href="../index.html" class="nav_btn">FEATURED</a>
                         <a href="../categories/data_science.html" class="nav_btn">DATA_SCIENCE</a>
                         <a href="../categories/software.html" class="nav_btn">SOFTWARE</a>
                         <a href="../categories/chemical_engineering.html" class="nav_btn">CHEMICAL_ENGINEERING</a>
-                        <a href="../categories/writing.html" class="nav_btn">WRITING</a>
                         <a href="../about.html" class="nav_btn">ABOUT</a>
                     </div>
                 </div>
@@ -30,7 +26,87 @@
         </div>
 
         <div class="content">
+            <div class="article_wrapper">
+                <span class="category_entry_title">Confocal Microscope Slide Image Aligner</span>
+                <span id="complete">COMPLETE</span>
+                <h1>Objective</h1>
+                <p>To create an application to help align microscope images for the generation of 3D models.</p>
+                <div class="dashed img_wrapper">
+                    <img src="../assets/slide_aligner.png" alt width="1000" height="650"/>
+                    <h4>An example of the output from the application.</h4>
+                </div>
+                <h1>Overview</h1>
+                <h2>Background</h2>
+                <p>While working in Dr. Prausnitz's Drug Delivery Lab at Georgia Tech, one of my resposibilities was to perform
+                    histological analysis of our experiments on animal tissue. One machine I used was the confocal microscope.</p>
+                <p>A confocal microscope functions by emitting a laser through a fluorescently stained sample on a microscope slide and scanning
+                    the transmittance of light onto the sensor below the slide. The transmittance is mathematically converted
+                    into absorbance to generate the final image.</p>
+                <div class="dashed img_wrapper">
+                    <img src="../assets/slide_aligner/confocalpath.png" alt width="700" height="600"/>
+                    <h4><a href="https://imb.uq.edu.au/facilities/microscopy/2020-microscopy-resources/image-capture/confocal-techniques">
+                        https://imb.uq.edu.au/facilities/microscopy/2020-microscopy-resources/image-capture/confocal-techniques</a></h4>
+                </div>
+                <h2>The Problem</h2>
+                <p>A confocal microscope can generate a 3D model by taking multiple images from the same slide at different focuses. This is called a Z-Stack. However,
+                    the size of this 3D model is limited by how large of a sample can fit on the microscope slide. After about 50-100 um (that's 0.05 to 0.1 mm),
+                    too much light is occluded by the sample to make a ZStack. <b>Our samples were ~1.5cm, about 100x this limit.<b></p>
+                <h2>My solution</h2>
+                <p>To obviate this issue, I presented the idea that if we take multiple tissue samples across multiple slides, I could write
+                    an application to align the images and generate the model myself. My proposal was approved and this project was born.</p>
+                <h1>Input</h1>
+                <p>The input to my application was a series of microscope images with <b>different size, rotation, and aligment</b> but
+                    sharing the same magnification. An example collection of such images is provided below.</p>
+                <div class="dashed img_wrapper">
+                    <img src="../assets/slide_aligner/aligner_input.png" alt width="1000" height="565"/>
+                    <h4>An example set of four input images. Each model was made from 40-60 images compiled together.</h4>
+                </div>
+                <h1>Processing</h1>
+                <h2>Challenges</h2>
+                <p>The biggest challenge here was the sheer size of the images (for certain reasons, it was necessary to keep the
+                    full resolution output from the microscope for other purposes, even though the 3D models did not require the full resolution).
+                    I was dealing with approx. 300GB of images (disk-size, not size in memory) that needed to be rotated,
+                    aligned, cropped, and ultimately compiled into their models. The issue was that I did not have access to a computer with enough RAM to hold all the images for one model in memory simultaneously,
+                    a necessary requirement for ensuring the alignment was satisfactory.
+                <h2>Solution</h2>
+                <p>My innovation to get around this issue was to
+                    instead align small thumbnail-sized versions of the images within my application and save the rotations, translations, and cropping
+                    for the small set of images. Then, I could programmatically scale those operations up to the full size images and
+                    process them overnight with a simple script.</p>
+                <h2>GUI Application (in Java)</h2>
+                <p>Borrowing some code from my level editors for <a href="us.html">Us</a> and <a href="quandom.html">Quondam</a>, I wrote an
+                    application with a GUI in which the user can align the thumbnail-sized images together and save the transformations
+                    necessary for aligning the full-scale images.</p>
+                <div class="dashed img_wrapper">
+                    <img src="../assets/slide_aligner/aligner-1.png" alt width="1000" height="565"/>
+                    <h4>Two images unaligned. The selected image in blue, and the adjacent image in red.</h4>
+                    <img src="../assets/slide_aligner/aligner-2.png" alt width="1000" height="565"/>
+                    <h4>The same to images after translation and rotation.</h4>
+                </div>
+                <h2>Large-scale Processing</h2>
+                <p>To apply the transformation commands determined by the GUI Application shown above, I wrote a relatively simple
+                    MATLAB script making use of MATLAB's wonderfully optimized Image Processing Toolbox. The code still took
+                    many, many hours to run, but mostly due to the slow read/write times from disk compared to the processing times.</p>
+                <h1>Final Product</h1>
+                <p>After all the processing in my Java application and MATLAB script, a selection of mis-aligned images could form
+                    an animated GIF showing the change in the x-y image over a change in the third axis, z.</p>
+                <div class="dashed img_wrapper">
+                    <img src="../assets/slide_aligner/images_grayscale.gif" alt width="849" height="529"/>
+                    <h4>An animated GIF showing the final aligned series of confocal images.</h4>
+                </div>
+                <h2>Generation of voxel model</h2>
+                <p>Finally, by making use of the python package 'napari' and implementing something similar to Lorensen and Cline's
+                    marching cubes algorithm, a voxel model could be created to view the collection of images in 3D space. The model
+                    was colored blue to help improve visibility.</p>
+                <div class="dashed img_wrapper">
+                    <img src="../assets/slide_aligner.png" alt width="1000" height="650"/>
+                    <h4>An example of the output from the application.</h4>
+                </div>
+            </div>
 
+            <div class="footer">
+                <p>© 2021 Nicholas Klavohn. All rights reserved.</p>
+            </div>
         </div>
     </div>
 
@@ -40,7 +116,7 @@
 
     // Get the navbar
     var navbar = document.getElementById("navbar");
-    var name_space = document.getElementById('name_space');
+    var name_space = document.getElementById('name_space_empty');
 
     //when navbar gets to the top of the page (height of name_space), make it stick to the top
     function myFunction() {
@@ -54,8 +130,4 @@
     </script>
 </body>
 
-
-<footer>
-
-</footer>
 </html>
