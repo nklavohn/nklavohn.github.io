@@ -18,7 +18,8 @@
                         <a href="../index.html" class="nav_btn">FEATURED</a>
                         <a href="../categories/data_science.html" class="nav_btn">DATA_SCIENCE</a>
                         <a href="../categories/software.html" class="nav_btn">SOFTWARE</a>
-                        <a href="../categories/chemical_engineering.html" class="nav_btn">CHEMICAL_ENGINEERING</a>
+                        <a href="../categories/chemical_engineering.html" class="nav_btn">CHEMICAL_ENG.</a>
+                        <a href="../categories/writing.html" class="nav_btn">WRITING</a>
                         <a href="../about.html" class="nav_btn">ABOUT</a>
                     </div>
                 </div>
@@ -30,17 +31,17 @@
                 <span class="category_entry_title">Confocal Microscope Slide Image Aligner</span>
                 <span id="complete">COMPLETE</span>
                 <h1>Objective</h1>
-                <p>To create an application to help align microscope images for the generation of 3D models.</p>
+                <p>To create an application to help microscope images for the generation of 3D models.</p>
                 <div class="dashed img_wrapper">
                     <img src="../assets/slide_aligner.png" alt width="1000" height="650"/>
                     <h4>An example of the output from the application.</h4>
                 </div>
                 <h1>Overview</h1>
                 <h2>Background</h2>
-                <p>While working in Dr. Prausnitz's Drug Delivery Lab at Georgia Tech, one of my resposibilities was to perform
+                <p>While working in Dr. Prausnitz's Drug Delivery Lab at Georgia Tech, one of my responsibilities was to perform
                     histological analysis of our experiments on animal tissue. One machine I used was the confocal microscope.</p>
                 <p>A confocal microscope functions by emitting a laser through a fluorescently stained sample on a microscope slide and scanning
-                    the transmittance of light onto the sensor below the slide. The transmittance is mathematically converted
+                    the transmittance of light onto the microscope's sensor. The transmittance is mathematically converted
                     into absorbance to generate the final image.</p>
                 <div class="dashed img_wrapper">
                     <img src="../assets/slide_aligner/confocalpath.png" alt width="700" height="600"/>
@@ -50,10 +51,10 @@
                 <h2>The Problem</h2>
                 <p>A confocal microscope can generate a 3D model by taking multiple images from the same slide at different focuses. This is called a Z-Stack. However,
                     the size of this 3D model is limited by how large of a sample can fit on the microscope slide. After about 50-100 um (that's 0.05 to 0.1 mm),
-                    too much light is occluded by the sample to make a ZStack. <b>Our samples were ~1.5cm, about 100x this limit.<b></p>
+                    too much light is occluded by the sample to make a ZStack. Our samples were ~1.5cm, about <b>100x</b> this limit.</p>
                 <h2>My solution</h2>
-                <p>To obviate this issue, I presented the idea that if we take multiple tissue samples across multiple slides, I could write
-                    an application to align the images and generate the model myself. My proposal was approved and this project was born.</p>
+                <p><b>To obviate this issue, I presented the idea that if we take images of multiple tissue samples across multiple slides, I could write
+                    an application to align the images and generate the model myself. My proposal was approved, and this project was born.</b></p>
                 <h1>Input</h1>
                 <p>The input to my application was a series of microscope images with <b>different size, rotation, and aligment</b> but
                     sharing the same magnification. An example collection of such images is provided below.</p>
@@ -88,7 +89,7 @@
                     MATLAB script making use of MATLAB's wonderfully optimized Image Processing Toolbox. The code still took
                     many, many hours to run, but mostly due to the slow read/write times from disk compared to the processing times.</p>
                 <h1>Final Product</h1>
-                <p>After all the processing in my Java application and MATLAB script, a selection of mis-aligned images could form
+                <p>After all the processing in my Java application and MATLAB script, a selection of now-aligned images could form
                     an animated GIF showing the change in the x-y image over a change in the third axis, z.</p>
                 <div class="dashed img_wrapper">
                     <img src="../assets/slide_aligner/images_grayscale.gif" alt width="849" height="529"/>
