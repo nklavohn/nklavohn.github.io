@@ -6,6 +6,47 @@
     <link rel="stylesheet" href="../css/category.css"/>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap');
+
+        .note{
+            font-family: georgia;
+            font-weight: 600;
+            font-size: 36px;
+            color: #555;
+            margin-bottom: 0px;
+            margin: 25px 0 0 0;
+            padding: 0 25px 10px 22px;
+            border-left: 3px solid #008891;
+        }
+
+        .note_p {
+            font-family: georgia;
+            font-weight: 400;
+            font-size: 20px;
+            color: #777;
+            margin: 0 0 0 0;
+            line-height: 1.5em;
+            text-align: justify;
+
+            padding: 0px 45px 20px 45px;
+            border-left: 1px dashed #9bbec0;
+        }
+
+        .img_wrapper {
+            width: auto;
+            text-align: center;
+            padding: 15px 0px;
+        }
+
+        h4 {
+            font-family: helvetica;
+            font-weight: 400;
+            font-size: 16px;
+            color: #555;
+        }
+
+        .dashed {
+            border-left: 1px dashed #9bbec0;
+        }
     </style>
 </head>
 
@@ -33,8 +74,20 @@
         </div>
 
         <div class="content">
+            <div style="padding:20px;">
+                <h1 class="note">A Quick Note</h1>
+                <p class="note_p">This page is far from complete, but I wanted to offer a couple snippets of my writing as a way of
+                    making my portfolio a better representation of my whole self. I have lots of poems and a couple
+                    short stories I'd like to publish in an anthology at some point as well, which are not included here.
+                </p>
+                <div class="dashed img_wrapper">
+                    <img src="../assets/stagnancy/journal.jpg" alt width="500" height="375"/>
+                    <img src="../assets/stagnancy/journals.jpg" alt width="500" height="375"/>
+                </div>
+                <p class="note_p">I handmake my own journals with high-quality leather and artist's sketch paper. My favorite pens are the
+                    Nemosine Fission and Kaweco Supra Brass, and my favorite ink is Pilot Iroshizuku ku-jaku (a wonderful torquoise).</p>
+            </div>
             <div class="category_entries_wrapper">
-
                 <div class="category_wrapper">
                     <a class="no_underline" href="../articles/stagnancy.html">
                         <span class="category_entry_title">Stagnancy - A novel (</span>
@@ -56,20 +109,6 @@
                 </div>
 
                 <div class="category_wrapper">
-                    <a class="no_underline" href="../articles/ode_to_friends.html">
-                        <span class="category_entry_title">An ode to friends (</span>
-                        <span id="status">status=</span>
-                        <span id="complete">COMPLETE</span>
-                        <span class="category_entry_title">):</span>
-                        <div class="category_entry">
-                            <div class="category_entry_summary">
-                                <p class="category_entry_snippet">A thanks to the best friends I could ask for.</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="category_wrapper">
                     <a class="no_underline" href="../articles/our_joined_body.html">
                         <span class="category_entry_title">Our joined body then was his (</span>
                         <span id="status">status=</span>
@@ -78,6 +117,20 @@
                         <div class="category_entry">
                             <div class="category_entry_summary">
                                 <p class="category_entry_snippet">A poem for a friend lost.</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="category_wrapper">
+                    <a class="no_underline" href="../articles/ode_to_friends.html">
+                        <span class="category_entry_title">An ode to friends (</span>
+                        <span id="status">status=</span>
+                        <span id="complete">COMPLETE</span>
+                        <span class="category_entry_title">):</span>
+                        <div class="category_entry">
+                            <div class="category_entry_summary">
+                                <p class="category_entry_snippet">A poem for friends remain.</p>
                             </div>
                         </div>
                     </a>

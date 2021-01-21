@@ -101,6 +101,7 @@ h4 {
 }
 
 .writing_wrapper > p{
-    padding-left: 100px;
-    padding-right: 100px;
+    /* padding-left: 100px;
+    padding-right: 100px; */
+    text-indent: 100px;
 }
