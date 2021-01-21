@@ -48,12 +48,20 @@ h4 {
 .footer > p {
     border: none;
     text-align: center;
+    font-size: 16px;
+    padding-top: 16px;
 }
 
 .img_wrapper {
     width: auto;
     text-align: center;
     padding: 15px 0px;
+}
+
+.img_wrapper_left {
+    width: auto;
+    text-align: left;
+    padding: 0px 0px 20px 75px;
 }
 
 .dashed {

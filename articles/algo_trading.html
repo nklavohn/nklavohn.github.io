@@ -41,7 +41,7 @@
                     competition in that middle frequency range where positions are held for, say, a day or two at a time. This is the region
                     where I am researching.</p> -->
                 <div class="img_wrapper">
-                    <img src="../assets/algo_trading/backtester.gif" alt width="720" height="480"/>
+                    <img src="../assets/algo_trading/stocks.gif" alt width="965" height="398"/>
                     <h4>An example output from my backtesting program, animated over time</h4>
                 </div>
                 <h1>Objective</h1>
@@ -53,21 +53,29 @@
                     due to their limited logging and bans on data export (due to licensing contracts).</p>
                 <p>Instead, I developed my
                     own backtesting environment in Python from scratch and began scraping data from brokerage APIs.</p>
-                <h2>Code Architecture</h2>
+                <h2>Algorithm Architecture</h2>
                 <p>An information flow diagram is provided below outlining the design of the backtester. The key design principle
-                    here is segmentation. By granting each element of the backtester only the information it needs and standardizing
+                    here is <b>segmentation</b>. By granting each element of the backtester only the information it needs and standardizing
                     what data flows between them, each element is entirely interchangable on command. This allows for
                     quick and efficient experimentation of different ideas.</p>
                 <div class="img_wrapper dashed">
-                    <img src="../assets/algo_trading/information_flow.jpg" alt width="720" height="480"/>
-                    <h4>The information flow diagram for my backtester, designed for effiency and segmentation.</h4>
+                    <img src="../assets/algo_trading/flow_diagram.png" alt width="1002" height="369"/>
+                    <h4>The information flow diagram for my stock algorithm, whereby all data from all stocks in the market are <br> reduced down to a couple stocks to be bought or sold on a given day.</h4>
                 </div>
-                <p><b>DatabaseManager:</b> Queries the database for the data necessary for testing the current day.</p>
                 <p><b>Filter:</b> Defines a universe of stocks as a subset of all stocks by a simple metric, such as top 100 market cap, and sends the subset to the SignalProcessor.</p>
                 <p><b>SignalProcessor:</b> Uses more complicated metrics to identify potential buy or sell signals, and sends the subset to the Strategy.</p>
                 <p><b>Strategy:</b> Takes all the signals and decides which ones to buy or sell, and sends orders to the Brokerage.</p>
-                <p><b>Brokerage:</b> Receives orders and models the price at which the stocks are purchased or sold. Minute data can be used to model slipping prices, or a no-slip assumption can be made.</p>
+                <p>These three elements comprising an algorithm are then plugged into the backtester to analyze the algorithm's performance</p>
+                <h2>Backtester Architecture</h2>
+                <p>With algorithms completely interchangable by changing a single line of code, this system is robust and ready to get testing right away.</p>
+                <div class="img_wrapper dashed">
+                    <img src="../assets/algo_trading/flow_diagram2.png" alt width="785" height="402"/>
+                    <h4>The information flow diagram for the backtester, designed for efficiency and segmentation</h4>
+                </div>
+                <p><b>DatabaseManager:</b> Queries the database for the data necessary for testing the current day.</p>
+                <p><b>StockAlgorithm:</b> Shown in the diagram above, comprised of a Filter, SignalProcessor, and Strategy.</p>
                 <p><b>Portfolio:</b> Records the number of shares and purchase price as determined by the brokerage. Measures success of algorithm.</p>
+                <p><b>Brokerage:</b> Receives orders and models the price at which the stocks are purchased or sold. Minute data can be used to model slipping prices, or a no-slip assumption can be made.</p>
                 <h2>Data Architecture</h2>
                 <p>My stock market data is saved partially in an SQLite Database (for datasets too large to hold in RAM) and
                     partially in Pandas dataframes saved as pickles (for datasets < ~1GB). This data storage setup, combined with efficiently
@@ -76,9 +84,55 @@
                 <p>The basic data features include open, high, low, close, volume, dividends, split_factor, market cap,
                     market evaluation, p/e ratio, and p/b ratio. From these, many other features can be calculated such as
                     moving averages, volume weighted price, resistance, momentum, etc.</p>
+                <h1>Data Sources</h1>
+                <p>I get my data from three sources. First, I've written a scraper that sends API calls to TDAmeritrade's API a saves data to my database.
+                    This is to acquire recent data. To acquire historical data from before I was scraping my own, I pay for access to
+                    <a href="https://www.tiingo.com/">Tiingo</a> for end-of-day data and fundamentals and <a href="https://polygon.io/">Polygon</a>
+                    for intra-day data.</p>
+                <div class="img_wrapper dashed">
+                    <a href="https://www.tiingo.com/">
+                        <img src="../assets/algo_trading/tiingo.png" alt width="500" height="300"/>
+                    </a>
+                    <a href="https://polygon.io/">
+                        <img src="../assets/algo_trading/polygon.png" alt width="500" height="300"/>
+                    </a>
+                    <h4><b>Disclaimer</b> I am not sponsored by or affiliated with either company. I just like their services at their price point, and would recommend them.</h4>
+                </div>
                 <h1>An Example</h1>
-                <p>Obviously, I won't be sharing any details on the specific strategy I am developing as that would leak all my hard work,
-                    but here's an example of using my backtester to test and improve a very simple algorithm.
+                <p>Obviously, I won't be sharing any details on the specific strategy I am developing because increasing volume traded
+                    through a strategy will eventually change your supply and demand curves enough that the strategy no longer works.
+                    But here's an example of using my backtester to test a very simple algorithm. </p>
+                <h2>The Hypothesis</h2>
+                <p>Let's say my hypothesis is "If AAPL increased in price yesterday, then it will increase in price again today". To test this, I could design a strategy that
+                    buys AAPL at market open if yesterdays returns were positive, and sells everything I own at the end of each day. (This is obviously a terrible hypothesis, used for illustrative purposes only.)</p>
+                <h2>The Code</h2>
+                <p>We'll just use a pass-through filter for this since we won't be running any computations to decide which stocks to buy. The signal processor will simply signal AAPL each morning where the previous returns were positive:</p>
+                <div class="img_wrapper_left dashed">
+                    <img src="../assets/algo_trading/sigproc.png" alt/>
+                </div>
+                <p>The strategy will buy all signals in the morning, if any, and sell all open positions at market close:</p>
+                <div class="img_wrapper_left dashed">
+                    <img src="../assets/algo_trading/strategy.png" alt/>
+                </div>
+                <h2>Results</h2>
+                <p>Plug the SignalProcessor and Strategy into an algorithm and you're good to test it, revealing pretty poor results for the period from 2019-01-01 to 2020-10-31.
+                    You'd be better off just throwing your money in a mutual fund than using an algorithm like this.</p>
+                <div class="img_wrapper dashed">
+                    <img src="../assets/algo_trading/test_aapl.png" alt/>
+                </div>
+                <h1>Conclusions</h1>
+                <p>
+                    Financial freedom comes from passively generated income and capital growth. I started the very very beginning of this project in September 2019,
+                    fueled by a desire for financial freedom. This backtesting architecture above is the refined product of many iterations and lots of deprecated code,
+                    but the result is a setup where I can test ideas faster than I can generate them. It seems now that I am close to finding a solution that will allow me to
+                    live the free life I desire to live.
+                </p>
+                <div class="img_wrapper dashed">
+                    <img src="../assets/algo_trading/stock_journal1.jpg" alt width="500" height="375"/>
+                    <img src="../assets/algo_trading/stock_journal2.jpg" alt width="500" height="375"/>
+                </div>
+                <p>As always, I record all my research and findings in journals for easy access to my collection of ideas. Most of those ideas are failures, but those many failures
+                    are just as valuable as the few successes.</p>
             </div>
 
             <div class="footer">
