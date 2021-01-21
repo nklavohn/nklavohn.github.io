@@ -38,8 +38,10 @@
                     <img src="../assets/quandom/base_camp.jpg" alt width="1000"/>
                     <h4>Creation of the base camp within my custom level editor.</h4>
                 </div>
+                <h2>Overview</h2>
                 <p><i>Quandom</i> is a game telling a story of war in a ravaged world
-                    where all the game text is written as poetry. Through metroidvania-like gameplay, you experience
+                    where all the game text is written as poetry. You only go on the missions your chosen character is assigned to, and can only understand the full story by replaying
+                    the game as each of the available characters. Through metroidvania-like gameplay, you experience
                     and reflect on the atrocities of war as you struggle to keep going.</p>
                 <h2>Core gameplay loop</h2>
                 <p> The game is a short campaign told in chapters
@@ -54,7 +56,7 @@
 
                 <h1>Custom-Built Level Editor</h1>
                 <h2>Overview</h2>
-                <p>I created a level editor to allow me to build the game levels with an efficient GUI. I decided to create my own instead
+                <p>I created a level editor to allow me to build the game levels with an efficient GUI. I decided to <b>create my own from scratch</b> instead
                     of using existing software (like Tiled) so that I could learn the fundamentals of serialization, generation and loading of
                     save files, entity pools, and proper ways of batching GPU draws. Also, by virtue of designing my own application, I could tailor
                     it exactly to my needs. </p>
@@ -88,18 +90,24 @@
                 <p>But, my assets are hand-drawn images, not geometric shapes with clear corners. Defining vertices would likely be both messy
                     and tedious. Instead, I used some geometry and linear algebra techniques to transform rectangular space into polar space with
                     the light source at coordinates (r=0, theta=0). Casting light in polar space involves only straight lines in one direction with
-                    whole number pixels, and is therefore much more computationally friendly.<p>
+                    whole number pixels, and is therefore much more computationally friendly since it avoids re-calculating the same pixels over and over again.<p>
                 <div class="dashed img_wrapper">
                     <img src="../assets/quandom/transform.png" alt width="494" height="198"/>
                     <img src="../assets/quandom/cast_light.jpg" alt/>
                     <h4>Transforming rectangular space (left) to polar space (right)</h4>
                 </div>
                 <p>All of this processing can be parallelized and sent to the GPU with the GLSL shader program shown above,
-                    making this a wonderful solution for my needs. Below is the final product:</p>
+                    making this a wonderful solution for my needs. Below is the final product, with sunrays poking through the clouds:</p>
                 <div class="dashed img_wrapper">
                     <img src="../assets/quandom/shaders_moving.gif" alt width="800" height="600"/>
                 </div>
-                <h1>Poetry Example</h1>
+                <h1>Poetry</h1>
+                <h2>Style</h2>
+                <p>As mentioned earlier, all the story of the game is told through poetry. Here is a sample below, written roughly in iambic pentameter to resemble
+                    the consistent pacing of a military march. The style would switch up through the game to accentuate the part of the story being told.</p>
+
+                <h2>All are responsible</h2>
+
                 <p>
                 Forever I have pondered why we fight,<br>
                 What purpose leads our enemies at night?<br>
