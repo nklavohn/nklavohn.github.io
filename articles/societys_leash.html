@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../css/main.css"/>
+    <link rel="stylesheet" href="../css/article.css"/>
+</head>
+
+<body>
+    <div id="body_wrapper">
+        <div id="name_space_empty">
+        </div>
+
+        <div class="sticky" id="navbar">
+            <div id="navwrap2">
+                <div id="navwrap3">
+                    <div id="navwrap1">
+                        <a href="../index.html" class="nav_btn">FEATURED</a>
+                        <a href="../categories/data_science.html" class="nav_btn">DATA_SCIENCE</a>
+                        <a href="../categories/software.html" class="nav_btn">SOFTWARE</a>
+                        <a href="../categories/chemical_engineering.html" class="nav_btn">CHEMICAL_ENG.</a>
+                        <a href="../categories/writing.html" class="nav_btn">WRITING</a>
+                        <a href="../about.html" class="nav_btn">ABOUT</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="article_wrapper">
+                <h1>Society's Leash</h1>
+                <p><b>Transribed from a journal entry on 2020-04-27</b></p>
+                <div class="writing_wrapper">
+                    <p>
+                        Our minds want to wander on an expedition of thought, but constantly we are forced to choke them out and constrain them with a stiff leash as an owner does an energetic dog. What is our purpose if not to explore the things which interest us the most? We have the skills and abilities to do great things not only for ourselves, but for other people, so why must our minds be smothered out by collegiate and corporate responsibilities? Shan't a man be judged by who he is and what he can do? We all agree this is the way, but then our system inherently misconstrues this ideal by representing an entire student by a decimal less than or equal to four, or an entire worker's career by some nicely arranged words on a sheet of paper. To have a "good" GPA or a "good" resume, one must relinquish the inherent adventurous nature of their mind to the Leash, to the authoritarian Self Control.
+                    </p><p>
+                        What does this mean, "Self Control"? It certainly does not mean that your <i>self has control</i>, but instead that your <i>self is controlled</i>, either by some exterior expectation that isn't yours, or perhaps by an expectation that, while yours, is derived from the outside world and not your own inner desires. Self Control means that you give up time with your friends, that you don't write that book you have an idea for, that you work a job you don't enjoy, that you stay cooped up inside all day, all in sacrifice for some sort of better future. This makes you quite unhappy. If your <i>self has control</i>, in the way that the words ought to mean, then your adventurous mind would have no owner and would therefore wander about like the free dog it is meant to be, unleashed, welcome to sniff and smell and bark and hunt completely unrestrained. You, in other words, could do all of those things you have repeatedly been giving up and finally be happy. Unfortunately, it feels we are all stuck with our <i>selves being controlled</i>. We want to get some nebulous dream job, we want to apply to graduate school, we obsess over our resume, and we are bred to believe that all of these things will occur if and only if we submit to Self Control.
+                    </p><p>
+                        Self Control is an authoritarian Leash used by Society to grapple the greatest minds and enslave them in service of the Collective. Society does this to purportedly maximize their own gain from the people who are a part of it. But in order to achieve genuine happiness and personal fulfillment, you must break away from the sirenic song of Society and work towards your Free Self. What happens when we don't submit to Self Control? There are occasional instances when we are given temporary freedom, say an open weekend or a summer vacation, but our minds are so used to being constrained that when our leash is removed we run about fanatically and without direction, overwhelmed by the energy of freedom and as a result unable to go anywhere productive. The ruinous problem is that we don't know what to do when our <i>self has control</i>. We are all slaves born into captivity, born constrained, born domesticated. When we get these free moments, we tire out in the quick and unguided exploration of an unleashed mind and quickly return to our Master, Self Control, ready to be tugged along again with our heads down, our collars snug, and our leashes taut.
+                    </p><p>
+                        Instead, what would happen if we learned to be productive in this free time? Free productivity is doing what you enjoy in the search of some sort of personal fulfillment. People naturally are creators, explorers, doers, and lovers. Therefore, taking orders at work, endlessly studying, and laying on the couch staring at the television every day are unlikely to bring that fulfillment. On the contrary, cooking, painting, chopping wood, reading, gardening, writing, loving, exercising, singing, dancing... these things we can look back on at the end of the day with a smile and think 'wow, I did something today'. Those who have broken away from Self Control and found their Free Selves are not only the happiest in society, but often the most successful. But learning to achieve productivity in unguided time is a difficult task which can only ever be attempted by first severing the Leash.
+                    </p><p>
+                        If a young person is to set a goal, why set a goal for normalcy? Why set a goal where your <i>self is controlled</i> when you could set a goal to live where your <i>self has control</i>? Fighting against Society’s Leash is incredibly risky, but the reward is a Free Self governed by your own decisions in pursuit of your own desires. In a country like this one, the cost of failure is neither death nor starvation, especially if you are surrounded by people who love you. If
+                        you fail to break away from the Leash, the Leash will happily enslave you again. The only real cost of failure is that you'll have to go back to the life you would have lived anyway.
+                    </p><p>
+                        Thus, I must attempt to break the Leash.
+                    </p><p>
+                        I must attempt to become my Free Self.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2021 Nicholas Klavohn. All rights reserved.</p>
+        </div>
+    </div>
+
+    <script>
+    // When the user scrolls the page, execute myFunction
+    window.onscroll = function() {myFunction()};
+
+    // Get the navbar
+    var navbar = document.getElementById("navbar");
+    var name_space = document.getElementById('name_space_empty');
+
+    //when navbar gets to the top of the page (height of name_space), make it stick to the top
+    function myFunction() {
+        var height = name_space.clientHeight;
+        if (window.pageYOffset >= height) {
+            navbar.classList.add("sticky")
+        } else {
+            navbar.classList.remove("sticky");
+        }
+    }
+    </script>
+</body>
+
+</html>
