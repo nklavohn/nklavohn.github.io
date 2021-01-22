@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../css/main.css"/>
+    <link rel="stylesheet" href="../css/article.css"/>
+</head>
+
+<body>
+    <div id="body_wrapper">
+        <div id="name_space_empty">
+        </div>
+
+        <div class="sticky" id="navbar">
+            <div id="navwrap2">
+                <div id="navwrap3">
+                    <div id="navwrap1">
+                        <a href="../index.html" class="nav_btn">FEATURED</a>
+                        <a href="../categories/data_science.html" class="nav_btn">DATA_SCIENCE</a>
+                        <a href="../categories/software.html" class="nav_btn">SOFTWARE</a>
+                        <a href="../categories/chemical_engineering.html" class="nav_btn">CHEMICAL_ENG.</a>
+                        <a href="../categories/writing.html" class="nav_btn">WRITING</a>
+                        <a href="../about.html" class="nav_btn">ABOUT</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="article_wrapper">
+                <span class="category_entry_title">Drug Delivery R&D - Prausnitz Lab</span>
+                <span id="concept">CONCEPT</span>
+                <h1>Objective</h1>
+                
+            </div>
+
+            <div class="footer">
+                <p>© 2021 Nicholas Klavohn. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    // When the user scrolls the page, execute myFunction
+    window.onscroll = function() {myFunction()};
+
+    // Get the navbar
+    var navbar = document.getElementById("navbar");
+    var name_space = document.getElementById('name_space_empty');
+
+    //when navbar gets to the top of the page (height of name_space), make it stick to the top
+    function myFunction() {
+        var height = name_space.clientHeight;
+        if (window.pageYOffset >= height) {
+            navbar.classList.add("sticky")
+        } else {
+            navbar.classList.remove("sticky");
+        }
+    }
+    </script>
+</body>
+
+</html>

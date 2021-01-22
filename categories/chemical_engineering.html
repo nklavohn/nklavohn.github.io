@@ -4,9 +4,6 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="../css/main.css"/>
     <link rel="stylesheet" href="../css/category.css"/>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap');
-    </style>
 </head>
 
 <body>
@@ -22,9 +19,9 @@
                 <div id="navwrap3">
                     <div id="navwrap1">
                         <a href="../index.html" class="nav_btn">FEATURED</a>
-                        <a href="data_science.html" class="nav_btn" id="current_page">DATA_SCIENCE</a>
+                        <a href="data_science.html" class="nav_btn">DATA_SCIENCE</a>
                         <a href="software.html" class="nav_btn">SOFTWARE</a>
-                        <a href="chemical_engineering.html" class="nav_btn">CHEMICAL_ENG.</a>
+                        <a href="chemical_engineering.html" id="current_page">CHEMICAL_ENG.</a>
                         <a href="writing.html" class="nav_btn">WRITING</a>
                         <a href="../about.html" class="nav_btn">ABOUT</a>
                     </div>
@@ -37,8 +34,10 @@
 
                 <div class="category_wrapper">
                     <a class="no_underline" href="../articles/drug_delivery.html">
-                        <span class="category_entry_title">Drug Delivery Research</span>
+                        <span class="category_entry_title">Drug Delivery R&D (</span>
+                        <span id="status">project_status=</span>
                         <span id="complete">COMPLETE</span>
+                        <span class="category_entry_title">):</span>
                         <div class="category_entry">
                             <div class="category_entry_thumbnail">
                                 <img src="../assets/drug_delivery.png" alt width="360" height="240"/>
@@ -54,8 +53,10 @@
 
                 <div class="category_wrapper">
                     <a class="no_underline" href="../articles/methanol_synthesis.html">
-                        <span class="category_entry_title">Methanol Synthesis Plant Design</span>
+                        <span class="category_entry_title">Methanol Synthesis Plant Design (</span>
+                        <span id="status">project_status=</span>
                         <span id="complete">COMPLETE</span>
+                        <span class="category_entry_title">):</span>
                         <div class="category_entry">
                             <div class="category_entry_thumbnail">
                                 <img src="../assets/methanol_plant.png" alt width="360" height="240"/>
@@ -64,9 +65,9 @@
                                 <div class="category_entry_snippet">
                                     <p class="category_entry_snippet">Methanol is an attractive fuel alternative due to its energy density and
                                     the option for carbon neutral manufacturing.</p>
-                                    <p class="category_entry_snippet">This project was first: optimization of a plant designed by Shi et al.
-                                    to account for realistic feed and reactor conditions, second: heat integration for energy savings, and third:
-                                    economic analyses to determine profitability of the plant.</p>
+                                    <p class="category_entry_snippet">This project was first an optimization of a plant designed by Shi et al.
+                                    to account for realistic feed and reactor conditions, second a heat integration for energy savings, and third an
+                                    economic analysis to determine profitability.</p>
                                 </div>
                             </div>
                         </div>

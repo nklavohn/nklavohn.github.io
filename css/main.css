@@ -69,7 +69,7 @@ div {
     border-bottom: 1px solid #0f3037;
 }
 
-#navbar a {
+#navbar .nav_btn {
     /* float: left; */
     font-family: "Courier New";
     font-size: 24px;
@@ -84,7 +84,7 @@ div {
     transition: 0.5s;
 }
 
-#navbar a:hover {
+#navbar .nav_btn:hover {
     background-color: #008891;
     transition: 0.2s;
 }
@@ -105,6 +105,19 @@ div {
 #navwrap2 {
     overflow: hidden;
     border-bottom: 2px solid #e7e7de;
+}
+
+#current_page {
+    font-family: "Courier New";
+    font-size: 24px;
+    display: inline-block;
+    color: #e7e7de;
+    text-align: center;
+    padding: 15px 25px 15px 25px;
+    margin: 0 -5px 0 -5px;
+    width: auto;
+    text-decoration: none;
+    background-color: #008891;
 }
 
 .nav_btn {
