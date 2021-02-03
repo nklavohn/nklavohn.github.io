@@ -3,6 +3,38 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/main.css"/>
+
+    <style>
+        .hello {
+            font-family: georgia;
+            font-weight: 600;
+            font-size: 70px;
+            color: #008891;
+            margin: 120px 0 20px 0;
+            padding: 0 25px 10px 25px;
+            /* border-left: 2px solid #9bbec0; */
+        }
+        .welcome {
+            font-family: georgia;
+            font-weight: 300;
+            font-size: 32px;
+            color: #666;
+            margin: 5px 75px 0 75px;
+            padding: 10px 0 0 0;
+            /* text-align: center */
+            border-bottom: 1px solid #e2e2e2;
+        }
+
+        .featured {
+            font-family: georgia;
+            font-weight: 600;
+            font-size: 48px;
+            color: #008891;
+            margin: 40px 0 -60px 0;
+            padding: 0 25px 0 25px;
+            /* border-left: 2px solid #9bbec0; */
+        }
+    </style>
 </head>
 
 <body>
@@ -18,7 +50,7 @@
                 <div id="navwrap3">
                     <div id="navwrap1">
                         <a href="index.html" id="current_page">FEATURED</a>
-                        <a href="categories/data_science.html" class="nav_btn">DATA_SCIENCE</a>
+                        <a href="categories/data_science.html" class="nav_btn">DATA_SCI.</a>
                         <a href="categories/software.html" class="nav_btn">SOFTWARE</a>
                         <a href="categories/chemical_engineering.html" class="nav_btn">CHEMICAL_ENG.</a>
                         <a href="categories/writing.html" class="nav_btn">WRITING</a>
@@ -29,7 +61,16 @@
         </div>
 
         <div class="content">
-            <div class="entry_grid">
+            <div>
+                <h1 class="hello">hello.</h1>
+                <h2 class="welcome"><b>welcome</b> to my little corner of the internet where I put stuff I make</h2>
+                <h2 class="welcome"><b>please,</b> feel free to pour yourself some coffee and stay a while</h2>
+                <div style="text-align: center; margin-top: 50px;">
+                    <img src="assets/coffee.png"/>
+                </div>
+            </div>
+            <h1 class="featured">featured projects</h1>
+            <div class="entry_grid" style="margin-top: 50px;">
                 <div class="port_entry" id="slide_aligner">
                     <a class="no_underline" href="articles/slide_aligner.html">
                         <div class="entry_img">

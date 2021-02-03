@@ -16,6 +16,7 @@ div {
 }
 
 .content {
+    min-width: 1024px;
     max-width: 1400px;
     margin: auto;
 }
@@ -151,7 +152,7 @@ h3 {
     max-width: 1200px;
     font-size: 0;
     text-align: center;
-    margin-top: 20px;
+    margin-top: 0px;
 }
 
 .no_underline {

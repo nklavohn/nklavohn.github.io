@@ -41,7 +41,8 @@ h4 {
 }
 
 .article_wrapper {
-    padding: 25px;
+    /* margin-top: 50px; */
+    padding: 100px;
     display: block;
 }
 
