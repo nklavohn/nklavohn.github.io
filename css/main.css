@@ -68,6 +68,7 @@ div {
     background-color: #00587a;
     border-top: 5px solid #0f3037;
     border-bottom: 1px solid #0f3037;
+    z-index: 1000;
 }
 
 #navbar .nav_btn {

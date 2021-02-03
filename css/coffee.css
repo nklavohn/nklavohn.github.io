@@ -1,0 +1,135 @@
+.coffee_wrapper {
+    width: 1000px;
+    height: 700px;
+    margin: 0 auto;
+    /* background: blue; */
+    position: relative;
+    z-index: -100;
+}
+
+.coffee_guard {
+    background: #f7f7f1;
+    position: absolute;
+    bottom: 0px;
+
+    width: 700px;
+    right: 0px;
+    height: 265px;
+}
+
+.over_coffee {
+    position: relative;
+
+    z-index: -101;
+    top: -700px;
+}
+
+.button_wrapper {
+    position: relative;
+    top: -700px;
+}
+
+.hello {
+    font-family: georgia;
+    font-weight: 600;
+    font-size: 70px;
+    color: #008891;
+    margin: 120px 0 20px 0;
+    padding: 0 25px 10px 25px;
+}
+
+.welcome {
+    font-family: georgia;
+    font-weight: 300;
+    font-size: 32px;
+    color: #666;
+    margin: 5px 75px 0 75px;
+    padding: 10px 0 0 0;
+    border-bottom: 1px solid #e2e2e2;
+}
+
+.featured {
+    font-family: georgia;
+    font-weight: 600;
+    font-size: 48px;
+    color: #008891;
+    margin: 40px 0 -60px 0;
+    padding: 0 25px 0 25px;
+}
+
+.after_coffee {
+    position: relative;
+    top: -800px;  /* equal to coffee_wrapper height */
+}
+
+.pour {
+    position: absolute;
+    background: #9bbec0;
+    width: 0px;
+    bottom: 600px;
+    left: 0px;
+    height: 1000px;
+}
+
+.button {
+    position: relative;
+    top: -175px;
+    left: 300px;
+
+    border-radius: 4px;
+    background-color: #008891;
+    border: none;
+    color: white;
+    text-align: center;
+
+    font-size: 32px;
+    font-weight: 600;
+    font-family: georgia;
+    border-radius: 25px;
+
+    width: 175px;
+    transition: all 0.5s;
+    z-index: 100;
+
+    cursor: pointer;
+}
+
+.button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.button:focus {
+    outline: none;
+}
+
+.button:hover span {
+    padding-right: 25px;
+}
+
+.button:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+#steam {
+    position: absolute;
+    width: 160px;
+    height: 200px;
+    bottom: 260px;
+    left: 400px;
+    /* background: #822;
+    mix-blend-mode: multiply; */
+    opacity: 0;
+}
