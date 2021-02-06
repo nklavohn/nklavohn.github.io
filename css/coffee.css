@@ -1,3 +1,25 @@
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    background-color: #008891;
+    height: 100%;
+    display: block;
+}
+
+div {
+    display: block;
+    margin: auto;
+}
+
+#container {
+    width: 1000px;
+    height: 100%;
+    position: relative;
+}
+
 .coffee_wrapper {
     width: 1000px;
     height: 700px;
@@ -31,22 +53,21 @@
 }
 
 .hello {
+    position: absolute;
     font-family: georgia;
     font-weight: 600;
     font-size: 70px;
-    color: #008891;
-    margin: 120px 0 20px 0;
-    padding: 0 25px 10px 25px;
+    color: #f7f7f1;
 }
 
 .welcome {
+    position: absolute;
     font-family: georgia;
     font-weight: 300;
     font-size: 32px;
-    color: #666;
-    margin: 5px 75px 0 75px;
-    padding: 10px 0 0 0;
-    border-bottom: 1px solid #e2e2e2;
+    color: #f7f7f1;
+
+    /* border-bottom: 1px solid #e2e2e2; */
 }
 
 .featured {
