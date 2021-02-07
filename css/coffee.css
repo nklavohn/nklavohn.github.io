@@ -15,37 +15,12 @@ div {
 }
 
 #container {
-    width: 1000px;
+    min-width: 1000px;
+    max-width: 1400px;
     height: 100%;
     position: relative;
 }
 
-.coffee_wrapper {
-    width: 1000px;
-    height: 700px;
-    margin: 0 auto;
-    /* background: blue; */
-    position: relative;
-    z-index: -100;
-}
-
-.coffee_guard {
-    background: #f7f7f1;
-    position: absolute;
-    bottom: 0px;
-
-    width: 700px;
-    right: 0px;
-    height: 265px;
-}
-
-.over_coffee {
-    position: relative;
-
-    z-index: -101;
-    top: -700px;
-    margin-bottom: -700px;
-}
 
 .button_wrapper {
     position: relative;
@@ -56,7 +31,7 @@ div {
     position: absolute;
     font-family: georgia;
     font-weight: 600;
-    font-size: 70px;
+    font-size: 90px;
     color: #f7f7f1;
 }
 
@@ -64,7 +39,7 @@ div {
     position: absolute;
     font-family: georgia;
     font-weight: 300;
-    font-size: 32px;
+    font-size: 50px;
     color: #f7f7f1;
 
     /* border-bottom: 1px solid #e2e2e2; */
