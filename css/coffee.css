@@ -14,13 +14,16 @@ div {
     margin: auto;
 }
 
+#bigger_container {
+    height: 100%;
+}
+
 #container {
     min-width: 1000px;
     max-width: 1400px;
     height: 100%;
     position: relative;
 }
-
 
 .button_wrapper {
     position: relative;
@@ -39,7 +42,7 @@ div {
     position: absolute;
     font-family: georgia;
     font-weight: 300;
-    font-size: 50px;
+    font-size: 40px;
     color: #f7f7f1;
 
     /* border-bottom: 1px solid #e2e2e2; */
@@ -124,4 +127,8 @@ div {
     /* background: #822;
     mix-blend-mode: multiply; */
     opacity: 0;
+}
+
+.preserve_whitespace {
+    white-space: pre-wrap;
 }

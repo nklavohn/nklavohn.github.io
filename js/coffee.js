@@ -1,19 +1,20 @@
 function greeting() {
     var container = document.getElementById("container");
+    var bigger_container = document.getElementById("bigger_container");
 
     var startTime = Date.now();
-    console.log(startTime);
     var maxTime = 3000;  // milliseconds
     var substantiated = false;
     var id = setInterval(hello, 10);
 
-    var floater = new Floater();
+    var floater = new Floater(20);
     var floatID = setInterval(float, 10);
 
     var msg, msg2;
 
     function hello() {
         time = Date.now();
+
         if(time - startTime > maxTime) {
             clearInterval(id);
 
@@ -27,7 +28,7 @@ function greeting() {
                     msg.textContent = "hello.";
                     msg.classList.add("hello")
                     msg.style.left = 300 + "px";
-                    msg.style.bottom = container.clientHeight / 2 + 200 + "px";
+                    msg.style.bottom = bigger_container.clientHeight / 2 + 200 + "px";
                     msg.style.opacity = 0;
                     msg.style.margin = 0;
                     msg.style.marginBottom = -1 * msg.style.height + "px";
@@ -58,7 +59,7 @@ function greeting() {
                     msg.textContent = "welcome to my little corner of the internet";
                     msg.classList.add("welcome");
                     msg.style.left = 350 + "px";
-                    msg.style.bottom = container.clientHeight / 2 + 140 + "px";
+                    msg.style.bottom = bigger_container.clientHeight / 2 + 120 + "px";
                     msg.style.opacity = 0;
                     msg.style.margin = 0;
                     msg.style.marginBottom = -1 * msg.style.height + "px";
@@ -87,17 +88,18 @@ function greeting() {
                     msg.textContent = "please, ";
                     msg.classList.add("welcome");
                     msg.style.left = 350 + "px";
-                    msg.style.bottom = container.clientHeight / 2 + 100 + "px";
+                    msg.style.bottom = bigger_container.clientHeight / 2 + 70 + "px";
                     msg.style.opacity = 0;
                     msg.style.margin = 0;
                     msg.style.marginBottom = -1 * msg.style.height + "px";
                     container.appendChild(msg);
 
                     msg2 = document.createElement("h2");
-                    msg2.textContent = "grab some coffee before coming inside";
+                    msg2.textContent = " grab some coffee before coming inside";
                     msg2.classList.add("welcome");
-                    msg2.style.left = 460 + "px";
-                    msg2.style.bottom = container.clientHeight / 2 + 100 + "px";
+                    msg2.classList.add("preserve_whitespace");
+                    msg2.style.left = 350 + msg.offsetWidth + "px";
+                    msg2.style.bottom = bigger_container.clientHeight / 2 + 70 + "px";
                     msg2.style.opacity = 0;
                     msg2.style.margin = 0;
                     msg2.style.marginBottom = -1 * msg.style.height + "px";
@@ -111,7 +113,7 @@ function greeting() {
                 msg.style.left = 350 - 200 * Math.sin(anim * 3.14159 / 2) + "px";
 
                 msg2.style.opacity = anim2;
-                msg2.style.left = 460 - 200 * Math.sin(anim2 * 3.14159 / 2) + "px";
+                msg2.style.left = 350 + msg.offsetWidth - 200 * Math.sin(anim2 * 3.14159 / 2) + "px";
             }
         }
     }
@@ -119,7 +121,8 @@ function greeting() {
     function float() {
         floater.update();
 
-        container.style.top = floater.getOffset()[1] + "px";
+        // container.style.marginTop = floater.getOffset()[1] + "px";
+        container.style.height = bigger_container.offsetHeight + floater.getOffset()[1] + "px";
     }
 }
 
@@ -133,7 +136,7 @@ class Floater {
 
     update() {
         time = Date.now();
-        this.offset[1] = Math.sin((time - this.startTime) / 1000);
+        this.offset[1] = this.limit * (-1 + Math.sin((time - this.startTime) / 1000));
     }
 
     getOffset() {
