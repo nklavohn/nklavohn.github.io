@@ -7,7 +7,7 @@ function greeting() {
     var substantiated = false;
     var id = setInterval(hello, 10);
 
-    var floater = new Floater(20);
+    var floater = new Floater(15);
     var floatID = setInterval(float, 10);
 
     var msg, msg2;
