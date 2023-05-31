@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../css/main.css"/>
+    <link rel="stylesheet" href="../css/article.css"/>
+</head>
+
+<body>
+    <div id="body_wrapper">
+        <div id="name_space_empty">
+        </div>
+
+        <div class="sticky" id="navbar">
+            <div id="navwrap2">
+                <div id="navwrap3">
+                    <div id="navwrap1">
+                        <a href="../index.html" class="nav_btn">FEATURED</a>
+                        <a href="../categories/data_science.html" class="nav_btn">DATA_SCIENCE</a>
+                        <a href="../categories/software.html" class="nav_btn">SOFTWARE</a>
+                        <a href="../categories/chemical_engineering.html" class="nav_btn">CHEMICAL_ENG.</a>
+                        <a href="../about.html" class="nav_btn">ABOUT</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="article_wrapper">
+                <span class="category_entry_title">Methanol Synthesis - Capstone Project</span>
+                <span id="complete">COMPLETE</span>
+                <div class="img_wrapper">
+                    <img src="../assets/methanol.PNG" width=100% />
+                    <h4>Methanol plant design from electrolysis of water and the tri-reforming of carbon dioxide, natural gas, steam, and oxygen</h4>
+                </div>
+                <p><b>**I've included only the introduction here as this was a very large report.<b></p>
+                <h2>Introduction</h2>
+                <p>While the production of natural gas has reached an all-time high, so has the environmental impact caused by its extraction. The perfect combustion of natural gas should exclusively produce carbon dioxide and water, but the presence of strong carbon-carbon bonds along with chain stabilization in higher order hydrocarbons inevitably causes side reactions to produce SOx and NOx. Toxic byproducts are not the only plague of energy production via hydrocarbon extraction and combustion. Chemical spills and leaks often desecrate the environment, irreparably destroying ecosystems. Leaked hydrocarbons can persist for up to nine years within the atmosphere due to their stability. There is a clear need for an alternative to traditional hydrocarbons, and methanol has recently proved to be a competitive alternative. According to “The Atmospheric Chemistry of Alcohols” in Journal of the Brazilian Chemical Society, methanol has a half-life of one week within the atmosphere (1). Methanol also provides an alternative method of storage to the current standard of liquified natural gas (LNG). The density of methanol is higher than that of all liquified natural gasses, thus providing an improvement in storage space. Along with a reduction in storage space, methanol maintains a liquid state at STP and does not need to be cooled to cryogenic temperatures as LNG would. Therefore, pressurized storage vesicles are generally not required.</p>
+                <p>This lack of extreme storage conditions not only provides an objective baseline improvement on energy efficiency, but also procures environmental and financial incentives to look towards methanol. These factors have created the need for an efficient method to produce methanol. The direct hydrogenation of carbon dioxide to methanol is a method which has been rigorously studied, as it can be used as a carbon neutral fuel. Carbon dioxide can readily be removed from the atmosphere via carbon capture, or even be retrieved from the flue gas of other combustion processes. This does not come without difficulty though. The hydrogen of this method is produced exclusively from the electrolysis of water. While this process does not directly produce carbon pollutants, it is energy intensive. In “Design and simulation of a methanol production plant from CO2 hydrogenation”, a study conducted at Federal University of Parana, it was shown that so long as the hydrogen is produced from renewable energy sources, the process can become efficient (3). This method, while having potential, is not practical given the current methods of energy production.
+                </p>
+                <p>Thus, the use of syngas, another method reducing the required amount of hydrogen produced from water electrolysis, was introduced. “Methanol production from Water Electrolysis and Tri-Reforming”, a paper published by The University of Calgary, sought to create an aspen model of the syngas process (2). The syngas method utilizes the oxidation of methane and couples it with water electrolysis, as methane carries the additional hydrogen required to keep the stoichiometric number of carbon, oxygen, and hydrogen balanced with the reduced usage of water electrolysis. There are five major components for the production of methanol with syngas. First, natural gas is mixed with steam and fed into a tri-reformer alongside CO2 and O2 produced from water electrolysis. The outlet syngas is mixed with the H2 from water electrolysis and sent into the compression train. The compression train is utilized to remove excess water from the syngas, and ensure the stoichiometric number equals two. The compressed syngas is then sent to the methanol synthesis reactor, which converts CO and CO2 into methanol. Once it has left the reactor, the methanol must be separated from H2O. It is sent through two VLE columns in series. Finally, the gaseous components from both reactors are sent off as flue gas to the pre-heater. The mixture of methanol and water is then sent through a distillation column to purify the methanol to 99% with a recovery of 99%.
+                    </p>
+            </div>
+
+            <div class="footer">
+                <p>© 2021 Nicholas Klavohn. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    // When the user scrolls the page, execute myFunction
+    window.onscroll = function() {myFunction()};
+
+    // Get the navbar
+    var navbar = document.getElementById("navbar");
+    var name_space = document.getElementById('name_space_empty');
+
+    //when navbar gets to the top of the page (height of name_space), make it stick to the top
+    function myFunction() {
+        var height = name_space.clientHeight;
+        if (window.pageYOffset >= height) {
+            navbar.classList.add("sticky")
+        } else {
+            navbar.classList.remove("sticky");
+        }
+    }
+    </script>
+</body>
+
+</html>

@@ -11,6 +11,21 @@ p {
     border-left: 1px dashed #9bbec0;
 }
 
+ul {
+    padding: 0px 45px 20px 100px;
+    border-left: 1px dashed #9bbec0;
+}
+
+li {
+    font-family: georgia;
+    font-weight: 400;
+    font-size: 20px;
+    color: #777;
+    margin: 0 0 0 0;
+    line-height: 1.5em;
+    text-align: justify;
+}
+
 h1 {
     font-family: georgia;
     font-weight: 600;
